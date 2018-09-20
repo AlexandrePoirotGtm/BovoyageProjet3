@@ -20,14 +20,16 @@ namespace Projet_Web.Controllers
         // GET: api/Voyages
         public IQueryable<Voyage> GetVoyages()
         {
-            return db.Voyages;
+            return db.Voyages.Include(x => x.Destination);
         }
 
         // GET: api/Voyages/5
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
         {
-            Voyage voyage = db.Voyages.Find(id);
+            Voyage voyage = db.Voyages.Include(x => x.Destination)
+                                      .SingleOrDefault(x => x.ID == id);
+
             if (voyage == null)
             {
                 return NotFound();
