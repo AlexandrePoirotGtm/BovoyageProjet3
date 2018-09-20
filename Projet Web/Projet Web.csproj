@@ -100,6 +100,8 @@
   <ItemGroup>
     <Content Include="Application\html\Client.html" />
     <Content Include="Application\html\Clients.html" />
+    <Content Include="Application\html\Voyage.html" />
+    <Content Include="Application\html\Voyages.html" />
     <Content Include="Application\script\application.js" />
     <Content Include="Application\script\bootstrap-alert.min.js" />
     <Content Include="Application\style\application.css" />
