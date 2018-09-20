@@ -7,7 +7,7 @@ namespace Projet_Web.Models
 {
     public class AgenceVoyage
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required]
         public string Nom { get; set; }

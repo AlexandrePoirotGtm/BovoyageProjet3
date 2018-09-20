@@ -7,7 +7,7 @@ namespace Projet_Web.Models
 {
     public class Voyage
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required]
         public DateTime DateAller { get; set; }
