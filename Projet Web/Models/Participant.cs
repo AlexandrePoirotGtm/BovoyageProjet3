@@ -8,7 +8,17 @@ namespace Projet_Web.Models
 {
     public class Participant : Personne
     {
-        public float Reduction { get; set; }
+        [NotMapped]
+        public double Reduction
+        {
+            get
+            {
+                if (Age < 12)
+                    return 0.6d;
+                else
+                    return 1.0d;
+            }
+        }
 
         public int IDDossierReservation { get; set; }
 

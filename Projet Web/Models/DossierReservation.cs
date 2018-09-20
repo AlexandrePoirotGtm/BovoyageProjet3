@@ -16,6 +16,7 @@ namespace Projet_Web.Models
 
         public decimal PrixParPersonne { get; set; }
 
+        [Required]
         public Etat EtatDossierReservation { get; set; }
 
         public RaisonAnnulationDossier RaisonAnnulationDossier { get; set; }

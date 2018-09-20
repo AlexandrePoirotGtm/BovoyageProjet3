@@ -9,6 +9,7 @@ namespace Projet_Web.Models
 {
     public class Client : Personne
     {
+        [Required]
         public string Email { get; set; }
 
         public Client()
