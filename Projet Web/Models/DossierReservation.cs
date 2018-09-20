@@ -31,12 +31,8 @@ namespace Projet_Web.Models
         [ForeignKey("IDClient")]
         public Client Client { get; set; }
 
-        public List<int> IDParticipants { get; set; }
-        [ForeignKey("IDParticipants")]
         public List<Participant> Participants { get; set; }
 
-        [ForeignKey("IDAssurances")]
-        public List<int> IDAssurances { get; set; }
         public List<Assurance> Assurances { get; set; }
 
         public DossierReservation()
