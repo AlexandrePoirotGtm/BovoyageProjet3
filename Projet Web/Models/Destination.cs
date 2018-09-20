@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -22,7 +23,6 @@ namespace Projet_Web.Models
 
         public virtual List<Voyage> Voyages { get; set; }
 
-        //Implementation du constructeur par defaut nécéssaire à Entity
         public Destination() { }
 
         public Destination(string continent, string pays, string region)
