@@ -20,14 +20,21 @@ namespace Projet_Web.Controllers
         // GET: api/DossierReservations
         public IQueryable<DossierReservation> GetDossiersReservations()
         {
-            return db.DossiersReservations;
+            return db.DossiersReservations.Include(x => x.Assurances)
+                .Include(x => x.Client)
+                .Include(x => x.Participants)
+                .Include(x => x.Voyage);
         }
 
         // GET: api/DossierReservations/5
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult GetDossierReservation(int id)
         {
-            DossierReservation dossierReservation = db.DossiersReservations.Find(id);
+            DossierReservation dossierReservation = db.DossiersReservations.Include(x => x.Assurances)
+                .Include(x => x.Client)
+                .Include(x => x.Participants)
+                .Include(x => x.Voyage)
+                .SingleOrDefault(x => x.ID == id); 
             if (dossierReservation == null)
             {
                 return NotFound();
