@@ -24,12 +24,12 @@ namespace Projet_Web.Models
         public int IdDestination { get; set; }
 
         [ForeignKey("IdDestination")]
-        public virtual Destination Destination { get; set; }
+        public  Destination Destination { get; set; }
 
         public int IdAgenceVoyage { get; set; }
 
         [ForeignKey("IdAgenceVoyage")]
-        public virtual AgenceVoyage AgenceVoyage { get; set; }
+        public  AgenceVoyage AgenceVoyage { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
         public Voyage() { }
