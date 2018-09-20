@@ -98,22 +98,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="html\Clients.html" />
+    <Content Include="Application\html\Clients.html" />
+    <Content Include="Application\script\application.js" />
+    <Content Include="Application\script\bootstrap-alert.min.js" />
+    <Content Include="Application\style\application.css" />
+    <Content Include="Application\style\bootstrap-alert.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="images\article-image-1.jpg" />
-    <Content Include="images\article-image-2.jpg" />
-    <Content Include="images\main.jpg" />
-    <Content Include="images\maintenance-page.png" />
-    <Content Include="images\plage.jpg" />
-    <Content Include="images\steps-icon-1.png" />
-    <Content Include="images\steps-icon-2.png" />
-    <Content Include="images\steps-icon-3.png" />
+    <Content Include="Application\images\article-image-1.jpg" />
+    <Content Include="Application\images\article-image-2.jpg" />
+    <Content Include="Application\images\main.jpg" />
+    <Content Include="Application\images\maintenance-page.png" />
+    <Content Include="Application\images\plage.jpg" />
+    <Content Include="Application\images\steps-icon-1.png" />
+    <Content Include="Application\images\steps-icon-2.png" />
+    <Content Include="Application\images\steps-icon-3.png" />
     <Content Include="index.html" />
-    <Content Include="html\indexCollaborateur.html" />
-    <Content Include="html\indexCollaborateurLogin.html" />
-    <Content Include="html\indexMaintenance.html" />
-    <Content Include="script\script.js" />
-    <Content Include="style\style.css" />
+    <Content Include="Application\html\indexCollaborateur.html" />
+    <Content Include="Application\html\indexCollaborateurLogin.html" />
+    <Content Include="Application\html\indexMaintenance.html" />
+    <Content Include="Application\script\script.js" />
+    <Content Include="Application\style\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
