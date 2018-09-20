@@ -30,7 +30,7 @@ namespace Projet_Web.Models
         {
         }
 
-        public Participant(string civ, string nom, string prenom, string adresse, string tel, DateTime dateNaissance, float red)
+        public Participant(string civ, string nom, string prenom, string adresse, string tel, DateTime dateNaissance)
         {
             Nom = nom;
             Prenom = prenom;
@@ -38,7 +38,6 @@ namespace Projet_Web.Models
             Civilite = civ;
             Telephone = tel;
             DateNaissance = dateNaissance;
-            Reduction = red;
         }
 
         public override string ToString()
