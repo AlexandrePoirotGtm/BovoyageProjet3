@@ -98,6 +98,11 @@ namespace Projet_Web.Controllers
                 return NotFound();
             }
 
+            foreach (Voyage voyage in db.Voyages)
+            {
+                if (voyage.IDDestination == destination.Id)
+                    return BadRequest("à un voyage");
+            }
             db.Destinations.Remove(destination);
             db.SaveChanges();
 
