@@ -104,11 +104,13 @@
             }
 
             let client = {
+                Email: $('#Email').val(),
+                Civilite: $('#Civilite').val(),
                 Nom: $('#Nom').val(),
-                Description: $('#Description').val(),
-                CategorieID: $('#Categorie').val(),
-                DateFin: $('#DateFin').val(),
-                Priorite: $('[name=Priorite]:checked').val()
+                Prenom: $('#Prenom').val(),
+                Adresse: $('#Adresse').val(),
+                Telephone: $('#Telephone').val(),
+                DateNaissance: $('#DateNaissance').val(),
             };
 
             $.ajax({
@@ -121,33 +123,16 @@
                     //window.location.href = '/index.html';
                 },
                 error: function () {
-                    alert('Aïe aïe aïe carambla !!');
+                    alert('Probleme envoie');
                 }
             });
 
             return false;
         }
 
-        function LoadCategories() {
-            $.ajax({
-                url: '/api/categories',
-                success: function (categories) {
-                    var select = $("#Categorie");
-                    select.empty();
-                    select.append($('<option></option>')); // élément vide
-
-                    for (categorie of categories) {
-                        var option = $('<option></option>');
-                        option.val(categorie.ID);
-                        option.text(categorie.Nom);
-                        select.append(option);
-                    }
-                }
-            });
-        }
+       
 
         $(document).ready(function () {
-            LoadCategories();
             $('#Nom').focus(); // Sans jquery: document.getElementById('Nom').focus();
         });
 
