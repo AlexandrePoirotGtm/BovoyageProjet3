@@ -2,11 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projet_Web.Models
 {
     public class Participant : Personne
     {
+        public float Reduction { get; set; }
 
+        public int IDDossierReservation { get; set; }
+
+        [ForeignKey("IDDossierReservation")]
+        public DossierReservation DossierReservation { get; set; }
+
+
+        public Participant()
+        {
+        }
+
+        public Participant(string civ, string nom, string prenom, string adresse, string tel, DateTime dateNaissance, float red)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Adresse = adresse;
+            Civilite = civ;
+            Telephone = tel;
+            DateNaissance = dateNaissance;
+            Reduction = red;
+        }
+
+        public override string ToString()
+        {
+            return $"({ID}) {Nom.ToUpper()},{Prenom.ToLower()} - Ad. {Adresse}";
+        }
     }
 }
