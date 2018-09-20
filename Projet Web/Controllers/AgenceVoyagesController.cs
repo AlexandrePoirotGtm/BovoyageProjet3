@@ -20,14 +20,15 @@ namespace Projet_Web.Controllers
         // GET: api/AgenceVoyages
         public IQueryable<AgenceVoyage> GetAgencesVoyages()
         {
-            return db.AgencesVoyages;
+            return db.AgencesVoyages.Include(XmlReadMode => XmlReadMode.Voyages);
         }
 
         // GET: api/AgenceVoyages/5
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult GetAgenceVoyage(int id)
         {
-            AgenceVoyage agenceVoyage = db.AgencesVoyages.Find(id);
+            AgenceVoyage agenceVoyage = db.AgencesVoyages.Include(XmlReadMode => XmlReadMode.Voyages)
+                                                           .SingleOrDefault(x => x.ID==id);
             if (agenceVoyage == null)
             {
                 return NotFound();
