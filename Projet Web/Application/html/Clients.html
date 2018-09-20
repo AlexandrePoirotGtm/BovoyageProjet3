@@ -124,11 +124,19 @@
                             });
 
                             divClient.append(inputEtat);
-                            divClient.append($('<label></label>').text(Client.Nom));
+
+                            divClient.append($('<label></label>').text(Client.Email));
                             divClient.append($('<br>'));
-                           /* divClient.append($('<label></label>').text(Client.Description));
+                            divClient.append($('<label></label>').text(Client.Civilite.Nom));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Categorie.Nom));*/
+                            divClient.append($('<label></label>').text(Client.Civilite.Prenom));
+                            divClient.append($('<br>'));
+                            divClient.append($('<label></label>').text(Client.Adresse));
+                            divClient.append($('<br>'));
+                            divClient.append($('<label></label>').text(Client.Telephone));
+                            divClient.append($('<br>'));
+                            divClient.append($('<label></label>').text(Client.DateNaissance));
+                            divClient.append($('<br>'));
                             divClient.append(buttonDelete);
 
                             divListeClients.append(divClient);

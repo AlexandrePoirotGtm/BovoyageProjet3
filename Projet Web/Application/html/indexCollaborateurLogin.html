@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link href="../style/style.css" rel="stylesheet">
-    <script src="../script/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Bo Voyage</title>
 
@@ -15,7 +15,7 @@
         function pasuser(form) {
             if (form.id.value == "bovoyage") {
                 if (form.pass.value == "bovoyage") {
-                    location = "indexCollaborateur.html"
+                    location = "Clients.html"
                 } else {
                     alert("Mauvais mot de passe")
                 }
@@ -34,11 +34,10 @@
                 <td>
                     <form name="login">
                         <input name="id" type="text">
-                    </form>
                 </td>
             </tr>
             <tr>
-                <td><h1><i><b>Mot de passe<span style=" font-size:17px;">(bovoyage):</span></b></i></h1></td>
+                <td><h1><i><b>Mot de passe<span style=" font-size:17px;">(bovoyage):</b></i></h1></td>
                 <td>
                     <input name="pass"
                            type="password">
@@ -53,13 +52,10 @@
                 </td>
                 <td>
                     <center>
-                        <br><input type="Reset">
-                    </center>
-
+                        <br><input type="Reset"></form>
                 </td>
             </tr>
         </table>
     </center>
 </body>
 
-</html>
