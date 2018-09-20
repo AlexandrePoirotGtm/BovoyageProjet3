@@ -106,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AgenceVoyagesController.cs" />
+    <Compile Include="Controllers\DestinationsController.cs" />
+    <Compile Include="Controllers\VoyagesController.cs" />
     <Compile Include="Data\BoVoyageDbContext.cs" />
     <Compile Include="Enumeration\Enumeration.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809201009463_Init.resx">
