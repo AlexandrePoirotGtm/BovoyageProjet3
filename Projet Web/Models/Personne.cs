@@ -11,12 +11,34 @@ namespace Projet_Web.Models
     public abstract class Personne
     {
         public int ID { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public string Adresse { get; set; }
-        public string Telephone { get; set; }
-        public DateTime DateNaissance { get; set; }
+
+        [Required]
         public string Civilite { get; set; }
-        public int Age { get; set; }
+
+        [Required]
+        public string Nom { get; set; }
+
+        [Required]
+        public string Prenom { get; set; }
+
+        [Required]
+        public string Adresse { get; set; }
+
+        [Required]
+        public string Telephone { get; set; }
+
+        [Required]
+        public DateTime DateNaissance { get; set; }
+
+        [NotMapped]
+        public int Age
+        {
+            get
+            {
+                DateTime today = DateTime.Today;
+                int age = today.Year - DateNaissance.Year;
+                return age;
+            }
+        }
     }
 }
