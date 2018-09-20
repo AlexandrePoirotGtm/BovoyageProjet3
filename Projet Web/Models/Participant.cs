@@ -5,7 +5,8 @@ using System.Web;
 
 namespace Projet_Web.Models
 {
-    public class Participant
+    public class Participant : Personne
     {
+
     }
 }

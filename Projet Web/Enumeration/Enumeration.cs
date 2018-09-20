@@ -4,9 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace Projet_Web.Enumeration
-{
-    public class Enumeration
-    {
+{ 
         public enum Etat
         {
             EnAttente,
@@ -25,5 +23,4 @@ namespace Projet_Web.Enumeration
             Client,
             PlacesInsuffisantes
         }
-    }
 }
