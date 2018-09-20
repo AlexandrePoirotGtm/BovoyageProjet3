@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="/"><i class="fas fa-check-double"></i> BoVoyage</a>
+        <a class="navbar-brand" href="../../index.html"><i class="fas fa-plane-departure"></i> BoVoyage</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -67,7 +67,15 @@
                     Champ requis
                 </div>
             </div>
-
+            <!--
+                <div class="form-group">
+                    <label for="IDDestination">IDDestination*</label>
+                    <select class="form-control" id="IDDestination" required></select>
+                    <div class="invalid-feedback">
+                        Champ requis
+                    </div>
+                </div>
+    -->
             <div class="form-group">
                 <label for="IDDestination">IDDestination*</label>
                 <input type="text" class="form-control" id="IDDestination" required />
@@ -78,13 +86,16 @@
 
             <div class="form-group">
                 <label for="IDAgenceVoyage">IDAgenceVoyage*</label>
-                <input type="text" class="form-control" id="IDAgenceVoyage" required />
+                <select class="form-control" id="IDAgenceVoyage" required></select>
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
             </div>
 
         </form>
+
+
+
         <div class="actions">
             <button class="btn btn-primary" onclick="return Enregistrer();">Enregistrer</button>
             <a href="/" class="btn btn-light">Annuler</a>
@@ -115,6 +126,7 @@
                 IDAgenceVoyage: $('#IDAgenceVoyage').val(),
                 
             };
+            console.log($('#IDDestination').val());
 
             $.ajax({
                 type: 'POST',
@@ -134,9 +146,48 @@
         }
 
 
+        function LoadDestinations() {
+            $.ajax({
+                url: '/api/destinations',
+                success: function (destinations) {
+                    var select = $("#IDDestination");
+                    select.empty();
+                    select.append($('<option></option>')); // élément vide
+
+                    for (destination of destinations) {
+                        var option = $('<option></option>');
+                        option.val(destination.ID);
+                      //  option.text(destination.Continent);
+                        option.text(destination.Region);
+                        //option.text(destination.ID);
+                        select.append(option);
+                    }
+                }
+            });
+        }
+
+        function LoadAgences() {
+            $.ajax({
+                url: '/api/AgenceVoyages',
+                success: function (agenceVoyages) {
+                    var select = $("#IDAgenceVoyage");
+                    select.empty();
+                    select.append($('<option></option>')); // élément vide
+
+                    for (agenceVoyage of agenceVoyages) {
+                        var option = $('<option></option>');
+                        option.val(agenceVoyage.ID);
+                        option.text(agenceVoyage.Nom);
+                        select.append(option);
+                    }
+                }
+            });
+        }
 
         $(document).ready(function () {
-            $('#Nom').focus(); // Sans jquery: document.getElementById('Nom').focus();
+            LoadAgences();
+            LoadDestinations() 
+            $('#DateAller').focus(); // Sans jquery: document.getElementById('Nom').focus();
         });
 
     </script>
