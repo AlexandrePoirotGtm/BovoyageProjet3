@@ -50,9 +50,13 @@ namespace Projet_Web.Controllers
             {
                 return BadRequest();
             }
-            if (agenceVoyage.Voyages == null)
-                return BadRequest("à un ou des voyages");
-
+                foreach (Voyage voyage in db.Voyages)
+                {
+                    if (voyage.IDAgenceVoyage == agenceVoyage.ID)
+                        return BadRequest("à un ou des voyages");
+                }
+            db.AgencesVoyages.Remove(agenceVoyage);
+            
             db.Entry(agenceVoyage).State = EntityState.Modified;
 
             try

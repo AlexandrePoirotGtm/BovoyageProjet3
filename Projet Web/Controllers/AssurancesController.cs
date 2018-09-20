@@ -96,8 +96,6 @@ namespace Projet_Web.Controllers
             {
                 return NotFound();
             }
-            if (assurance.DossierReservations == null)
-                return BadRequest("à un dossier");
 
             db.Assurances.Remove(assurance);
             db.SaveChanges();
