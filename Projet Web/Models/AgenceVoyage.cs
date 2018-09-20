@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,7 +15,9 @@ namespace Projet_Web.Models
         [Required]
         public string Nom { get; set; }
 
-        public virtual List<Voyage> Voyages { get; set; }
+
+        [ForeignKey("IDVoyages")]
+        public List<Voyage> Voyages { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
         public AgenceVoyage() { }

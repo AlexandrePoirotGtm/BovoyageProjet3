@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -21,7 +22,10 @@ namespace Projet_Web.Models
 
         public string Description { get; set; }
 
-        public virtual List<Voyage> Voyages { get; set; }
+        public List<int> IDVoyages { get; set; }
+
+        [ForeignKey("IDVoyages")]
+        public List<Voyage> Voyages { get; set; }
 
         public Destination() { }
 

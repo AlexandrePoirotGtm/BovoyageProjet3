@@ -23,14 +23,14 @@ namespace Projet_Web.Models
         [Required]
         public decimal PrixParPersonne { get; set; }
 
-        public int IdDestination { get; set; }
+        public int IDDestination { get; set; }
 
-        [ForeignKey("IdDestination")]
+        [ForeignKey("IDDestination")]
         public  Destination Destination { get; set; }
 
-        public int IdAgenceVoyage { get; set; }
+        public int IDAgenceVoyage { get; set; }
 
-        [ForeignKey("IdAgenceVoyage")]
+        [ForeignKey("IDAgenceVoyage")]
         public  AgenceVoyage AgenceVoyage { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
@@ -43,8 +43,8 @@ namespace Projet_Web.Models
             DateRetour = dateRetour;
             PlacesDisponibles = placesDisponibles;
             PrixParPersonne = prixParPersonne;
-            IdDestination = destination.Id;
-            IdAgenceVoyage = agenceVoyage.Id;
+            IDDestination = destination.Id;
+            IDAgenceVoyage = agenceVoyage.ID;
         }
 
         public Voyage(DateTime dateAller, DateTime dateRetour, int placesDisponibles, decimal prixParPersonne,
@@ -54,8 +54,8 @@ namespace Projet_Web.Models
             DateRetour = dateRetour;
             PlacesDisponibles = placesDisponibles;
             PrixParPersonne = prixParPersonne;
-            IdDestination = idDestination;
-            IdAgenceVoyage = idAgenceVoyage;
+            IDDestination = idDestination;
+            IDAgenceVoyage = idAgenceVoyage;
         }
 
         public void Reserver(int places)
