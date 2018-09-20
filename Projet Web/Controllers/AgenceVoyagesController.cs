@@ -50,6 +50,8 @@ namespace Projet_Web.Controllers
             {
                 return BadRequest();
             }
+            if (agenceVoyage.Voyages == null)
+                return BadRequest("à un ou des voyages");
 
             db.Entry(agenceVoyage).State = EntityState.Modified;
 
