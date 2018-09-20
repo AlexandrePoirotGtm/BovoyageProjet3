@@ -20,7 +20,7 @@ namespace Projet_Web.Models
             }
         }
 
-        public int IDDossierReservation { get; set; }
+        public int? IDDossierReservation { get; set; }
 
         [ForeignKey("IDDossierReservation")]
         public DossierReservation DossierReservation { get; set; }

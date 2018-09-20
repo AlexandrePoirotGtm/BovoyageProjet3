@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="html\Clients.html" />
     <Content Include="Global.asax" />
     <Content Include="images\article-image-1.jpg" />
     <Content Include="images\article-image-2.jpg" />
@@ -134,6 +135,10 @@
     <Compile Include="Migrations\201809201009463_Init.Designer.cs">
       <DependentUpon>201809201009463_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809201248480_test.cs" />
+    <Compile Include="Migrations\201809201248480_test.Designer.cs">
+      <DependentUpon>201809201248480_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AgenceVoyage.cs" />
     <Compile Include="Models\Assurance.cs" />
@@ -160,6 +165,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809201009463_Init.resx">
       <DependentUpon>201809201009463_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809201248480_test.resx">
+      <DependentUpon>201809201248480_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
