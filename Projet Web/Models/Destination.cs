@@ -22,9 +22,6 @@ namespace Projet_Web.Models
 
         public string Description { get; set; }
 
-        public List<int> IDVoyages { get; set; }
-
-        [ForeignKey("IDVoyages")]
         public List<Voyage> Voyages { get; set; }
 
         public Destination() { }

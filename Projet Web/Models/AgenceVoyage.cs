@@ -16,7 +16,6 @@ namespace Projet_Web.Models
         public string Nom { get; set; }
 
 
-        [ForeignKey("IDVoyages")]
         public List<Voyage> Voyages { get; set; }
 
         //Implementation du constructeur par defaut nécéssaire à Entity
