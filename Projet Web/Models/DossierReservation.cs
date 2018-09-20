@@ -24,11 +24,11 @@ namespace Projet_Web.Models
 
         public int IDVoyage { get; set; }
         [ForeignKey("IDVoyage")]
-        public  Voyage Voyage { get; set; }
+        public Voyage Voyage { get; set; }
 
         public int IDClient { get; set; }
         [ForeignKey("IDClient")]
-        public  Client Client { get; set; }
+        public Client Client { get; set; }
 
         public List<int> IDParticipants { get; set; }
         [ForeignKey("IDParticipants")]
