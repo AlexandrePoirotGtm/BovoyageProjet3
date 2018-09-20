@@ -20,14 +20,15 @@ namespace Projet_Web.Controllers
         // GET: api/Clients
         public IQueryable<Client> GetClients()
         {
-            return db.Clients;
+            return db.Clients.Include(x => x.DossiersReservation);
         }
 
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
         {
-            Client client = db.Clients.Find(id);
+            Client client = db.Clients.Include(x => x.DossiersReservation)
+                                       .SingleOrDefault(x => x.ID == id);
             if (client == null)
             {
                 return NotFound();

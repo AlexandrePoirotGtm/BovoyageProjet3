@@ -20,14 +20,15 @@ namespace Projet_Web.Controllers
         // GET: api/Assurances
         public IQueryable<Assurance> GetAssurances()
         {
-            return db.Assurances;
+            return db.Assurances.Include(x => x.DossierReservations);
         }
 
         // GET: api/Assurances/5
         [ResponseType(typeof(Assurance))]
         public IHttpActionResult GetAssurance(int id)
         {
-            Assurance assurance = db.Assurances.Find(id);
+            Assurance assurance = db.Assurances.Include(x => x.DossierReservations)
+                .SingleOrDefault(x => x.ID == id);
             if (assurance == null)
             {
                 return NotFound();
