@@ -18,68 +18,44 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Voyages <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Destinations <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/application/html/Voyages.html">Voyages</a>
                     <a class="nav-link" href="/application/html/AgencesVoyages.html">AgencesVoyages</a>
+                    <a class="nav-link" href="/application/html/Destinations.html">Destinations</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
-        <h3>Nouveau Voyage</h3>
-
-
-
-
+        <h3>Nouveau Destination</h3>
 
         <form novalidate>
-
+            <div class="form-group">
+                <label for="Continent">Continent*</label>
+                <textarea class="form-control" id="Continent" rows="3"></textarea>
+            </div>
 
             <div class="form-group">
-                <label for="DateAller">DateAller*</label>
-                <input type="date" class="form-control" id="DateAller" required />
+                <label for="Pays">Pays*</label>
+                <input type="text" class="form-control" id="Pays" required />
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="DateRetour">DateRetour*</label>
-                <input type="date" class="form-control" id="DateRetour" required />
+                <label for="Region">Region*</label>
+                <input type="text" class="form-control" id="Region" required />
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="PlacesDisponibles">PlacesDisponibles*</label>
-                <input type="text" class="form-control" id="PlacesDisponibles" required />
-                <div class="invalid-feedback">
-                    Champ requis
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="PrixParPersonne">PrixParPersonne*</label>
-                <input type="text" class="form-control" id="PrixParPersonne" required />
-                <div class="invalid-feedback">
-                    Champ requis
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="IDDestination">IDDestination*</label>
-                <input type="text" class="form-control" id="IDDestination" required />
-                <div class="invalid-feedback">
-                    Champ requis
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="IDAgenceVoyage">IDAgenceVoyage*</label>
-                <input type="text" class="form-control" id="IDAgenceVoyage" required />
+                <label for="Description">Description*</label>
+                <input type="text" class="form-control" id="Description" required />
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
@@ -107,20 +83,17 @@
                 return false;
             }
 
-            let Voyage = {
-                DateAller: $('#DateAller').val(),
-                DateRetour: $('#DateRetour').val(),
-                PlacesDisponibles: $('#PlacesDisponibles').val(),
-                PrixParPersonne: $('#PrixParPersonne').val(),
-                IDDestination: $('#IDDestination').val(),
-                IDAgenceVoyage: $('#IDAgenceVoyage').val(),
-                
+            let Destination = {
+                Continent: $('#Continent').val(),
+                Pays: $('#Pays').val(),
+                Region: $('#Region').val(),
+                Description: $('#Description').val(),
             };
 
             $.ajax({
                 type: 'POST',
-                url: '/api/Voyages',
-                data: Voyage,
+                url: '/api/Destinations',
+                data: Destination,
                 success: function () {
                     $('form')[0].reset();
                     $('form').removeClass('was-validated');

@@ -79,8 +79,8 @@ namespace Projet_Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (destination.Voyages == null)
-                return BadRequest("à un voyage");
+           /* if (destination.Voyages == null)
+                return BadRequest("à un voyage");*/
 
             db.Destinations.Add(destination);
             db.SaveChanges();

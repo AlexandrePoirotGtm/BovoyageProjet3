@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/Application/style/bootstrap-alert.min.css" />
     <link rel="stylesheet" href="/Application/style/application.css" />
     <style>
-        .Client {
+        .Destination {
             border: solid 1px lightgray;
             border-radius: 0;
             border-left: none;
@@ -21,26 +21,26 @@
             padding: 10px;
         }
 
-            .Client input[type=checkbox] {
+            .Destination input[type=checkbox] {
                 margin-right: 8px;
             }
 
-            .Client button {
+            .Destination button {
                 float: right;
                 display: none;
             }
 
-            .Client:hover {
+            .Destination:hover {
                 border: solid 1px gray;
                 border-left: none;
                 border-right: none;
             }
 
-            .Client:not(.alert-success):hover {
+            .Destination:not(.alert-success):hover {
                 background-color: whitesmoke;
             }
 
-            .Client:hover button {
+            .Destination:hover button {
                 display: block;
             }
     </style>
@@ -52,23 +52,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Clients <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Destinations <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/application/html/Voyages.html">Voyages</a>
                     <a class="nav-link" href="/application/html/AgenceVoyages.html">AgencesVoyages</a>
-                    <a class="nav-link" href="/application/html/Destinations.html">Destinations</a>
+                    <a class="nav-link" href="/application/html/Clients.html">Clients</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
         <ul class="toolbar">
-            <li><a href="/application/html/Client.html" class="btn btn-primary">Nouveau client</a></li>
+            <li><a href="/application/html/Destination.html" class="btn btn-primary">Nouvelle Destination</a></li>
             <li><input type="text" id="inputrecherche" name="recherche" value="" placeholder="recherche" /></li>
-            <li> <button onclick=getClients()>recherche</button>    </li>
+            <li> <button onclick=getDestinations()>recherche</button>    </li>
         </ul>
-        <div id="listeClients">
+        <div id="listeDestinations">
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -81,25 +81,25 @@
     <script>
 
 
-        function getClients() {
-            var divListeClients = $('#listeClients');
+        function getDestinations() {
+            var divListeDestinations = $('#listeDestinations');
             /*if ($("#inputrecherche").val())
-                var myurl = "/api/Clients" + $("#inputrecherche").val();
+                var myurl = "/api/Destinations" + $("#inputrecherche").val();
             else*/
-            var myurl = "/api/Clients"
+            var myurl = "/api/Destinations"
             console.log(myurl)
-            setLoader(divListeClients);
+            setLoader(divListeDestinations);
 
             $.ajax({
                 url: myurl,
-                success: function (Clients) {
-                    divListeClients.empty();
-                    if (Clients.length > 0) {
-                        for (Client of Clients) {
-                            var divClient = $('<div class="Client alert"></div>');
-                            divClient.attr("data-id", Client.ID);
+                success: function (Destinations) {
+                    divListeDestinations.empty();
+                    if (Destinations.length > 0) {
+                        for (Destination of Destinations) {
+                            var divDestination = $('<div class="Destination alert"></div>');
+                            divDestination.attr("data-id", Destination.ID);
 
-  
+
 
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
@@ -108,33 +108,27 @@
                                 $.bsAlert.closeDisplay = 'Non';
                                 $.bsAlert.sureDisplay = 'Oui';
                                 $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".Client");
-                                    var idClient = div.attr("data-id");
-                                    SupprimerClient(idClient, div);
+                                    var div = $(this).closest(".Destination");
+                                    var idDestination = div.attr("data-id");
+                                    SupprimerDestination(idDestination, div);
                                 });
                             });
 
 
-                            divClient.append($('<label></label>').text(Client.Email));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Civilite));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Nom));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Prenom));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Adresse));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Telephone));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.DateNaissance));
-                            divClient.append($('<br>'));
-                            divClient.append(buttonDelete);
+                            divDestination.append($('<label></label>').text(Destination.Continent));
+                            divDestination.append($('<br>'));
+                            divDestination.append($('<label></label>').text(Destination.Pays));
+                            divDestination.append($('<br>'));
+                            divDestination.append($('<label></label>').text(Destination.Region));
+                            divDestination.append($('<br>'));
+                            divDestination.append($('<label></label>').text(Destination.Description));
+                            divDestination.append($('<br>'));
+                            divDestination.append(buttonDelete);
 
-                            divListeClients.append(divClient);
+                            divListeDestinations.append(divDestination);
                         }
                     } else {
-                        divListeClients.append($('<p class="lead">Aucune Client pour le moment...</p>'));
+                        divListeDestinations.append($('<p class="lead">Aucune Destination pour le moment...</p>'));
                     }
                 },
                 error: Erreur
@@ -143,12 +137,12 @@
 
 
 
-        function SupprimerClient(id, div) {
+        function SupprimerDestination(id, div) {
             $.ajax({
                 type: 'DELETE',
-                url: '/api/Clients/' + id,
+                url: '/api/Destinations/' + id,
                 success: function () {
-                    getClients();
+                    getDestinations();
                 },
                 error: Erreur
             });
@@ -159,7 +153,7 @@
         }
 
 
-        $(document).ready(getClients);
+        $(document).ready(getDestinations);
 
     </script>
 </body>
