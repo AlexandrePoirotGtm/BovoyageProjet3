@@ -96,7 +96,8 @@ namespace Projet_Web.Controllers
             {
                 return NotFound();
             }
-
+            if (client.DossiersReservation == null)
+                return BadRequest("à un dossier");
             db.Clients.Remove(client);
             db.SaveChanges();
 
