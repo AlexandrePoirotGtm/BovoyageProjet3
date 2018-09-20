@@ -12,7 +12,7 @@
 <body>
     <script language="javascript">
 
-        function pasuser(form) {
+        function verifmotpass(form) {
             if (form.id.value == "bovoyage") {
                 if (form.pass.value == "bovoyage") {
                     location = "Clients.html"
@@ -37,7 +37,7 @@
                 </td>
             </tr>
             <tr>
-                <td><h1><i><b>Mot de passe<span style=" font-size:17px;">(bovoyage):</b></i></h1></td>
+                <td><h1><i><b>Mot de passe<span style=" font-size:17px;">(bovoyage)</span>:</b></i></h1></td>
                 <td>
                     <input name="pass"
                            type="password">
@@ -47,12 +47,14 @@
                 <td>
                     <center>
                         <input type="button" value="Login"
-                               onClick="pasuser(this.form)">
+                               onClick="verifmotpass(this.form)">
                     </center>
                 </td>
                 <td>
                     <center>
                         <br><input type="Reset"></form>
+                    </center>
+
                 </td>
             </tr>
         </table>
