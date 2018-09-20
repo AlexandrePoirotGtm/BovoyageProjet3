@@ -3,7 +3,7 @@
 .row
 {
   border: 1px solid black;
-//text-align:center
+/*text-align:center*/
 }
 
 *
@@ -89,7 +89,7 @@ header nav
 }
 header nav ul li
 {
-    float:left;
+    /*float:left;*/
     display: inline-block;
 }
 header nav ul li a
