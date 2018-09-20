@@ -12,6 +12,7 @@ namespace Projet_Web.Models
     {
         public int ID { get; set; }
 
+        [StringLength(40)]
         public string NumeroCarteBancaire { get; set; }
 
         public decimal PrixParPersonne { get; set; }

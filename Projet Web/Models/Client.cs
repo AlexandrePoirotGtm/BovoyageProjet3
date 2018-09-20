@@ -10,6 +10,7 @@ namespace Projet_Web.Models
     public class Client : Personne
     {
         [Required]
+        [StringLength(40)]
         public string Email { get; set; }
 
         public Client()

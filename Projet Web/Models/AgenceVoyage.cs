@@ -13,6 +13,7 @@ namespace Projet_Web.Models
         public int ID { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Nom { get; set; }
 
 

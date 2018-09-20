@@ -12,14 +12,18 @@ namespace Projet_Web.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Continent { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Pays { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Region { get; set; }
 
+        [StringLength(100)]
         public string Description { get; set; }
 
         public List<Voyage> Voyages { get; set; }

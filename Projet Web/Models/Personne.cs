@@ -13,18 +13,23 @@ namespace Projet_Web.Models
         public int ID { get; set; }
 
         [Required]
+        [StringLength(4)]
         public string Civilite { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Nom { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Prenom { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Adresse { get; set; }
 
         [Required]
+        [StringLength(40)]
         public string Telephone { get; set; }
 
         [Required]
