@@ -43,7 +43,7 @@
     <div class="container-fluid">
         <h3>Nouveau Dossier de Reservation</h3>
 
-        <form novalidate>
+        <form id="form" novalidate>
 
             <div class="form-group">
                 <label for="NumeroCarteBancaire">NumeroCarteBancaire</label>
@@ -204,7 +204,7 @@
 
 
                             divParticipant.append(buttonDelete);
-                            divParticipant.append($('<span></span>').text(Participant.Civilite + " " + Participant.Nom+" " + Participant.Prenom));
+                            divParticipant.append($('<span></span>').text(Participant.Civilite + " " + Participant.Prenom+" " + Participant.Nom));
 
                             divListeParticipants.append(divParticipant);
                         }
@@ -219,7 +219,7 @@
         }
 
         function Valider() {
-            var form = $('form');
+            var form = $('#form');
             let estValide = form[0].checkValidity();
             form.addClass("was-validated");
 
@@ -246,7 +246,8 @@
                 IDVoyage: $('#IDVoyage').val(),
                 IDClient: $('#IDClient').val()
             };
-
+            console.log(IDVoyage);
+            console.log(IDClient);
             $.ajax({
                 type: 'POST',
                 url: '/api/DossierReservations',
@@ -274,7 +275,7 @@
 
                     for (Voyage of Voyages) {
                         var option = $('<option></option>');
-                        option.val(Voyage.Id);
+                        option.val(Voyage.ID);
                         option.text(Voyage.Destination.Region);
                         select.append(option);
                     }
@@ -292,7 +293,7 @@
 
                     for (Client of Clients) {
                         var option = $('<option></option>');
-                        option.val(Client.Id);
+                        option.val(Client.ID);
                         option.text(Client.Prenom + " " + Client.Nom);
                         select.append(option);
                     }
