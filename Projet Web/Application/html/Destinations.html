@@ -96,7 +96,7 @@
             if ($("#inputrecherche").val())
                 var myurl = "/api/Destinations/" + $("#inputrecherche").val();
             else
-            var myurl = "/api/Destinations"
+                var myurl = "/api/Destinations"
             console.log(myurl)
             setLoader(divListeDestinations);
 
@@ -119,13 +119,13 @@
 
 
                             divDestination.append(buttonDelete);
-                            divDestination.append($('<label></label>').text("Continent: " +Destination.Continent));
+                            divDestination.append($('<label></label>').text("Continent: " + Destination.Continent));
                             divDestination.append($('<br>'));
-                            divDestination.append($('<label></label>').text("Pays: " +Destination.Pays));
+                            divDestination.append($('<label></label>').text("Pays: " + Destination.Pays));
                             divDestination.append($('<br>'));
-                            divDestination.append($('<label></label>').text("Region: " +Destination.Region));
+                            divDestination.append($('<label></label>').text("Region: " + Destination.Region));
                             divDestination.append($('<br>'));
-                            divDestination.append($('<label></label>').text("Description: " +Destination.Description));
+                            divDestination.append($('<label></label>').text("Description: " + Destination.Description));
                             divDestination.append($('<br>'));
 
                             divListeDestinations.append(divDestination);

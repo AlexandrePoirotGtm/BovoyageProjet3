@@ -185,7 +185,7 @@
             div.data('Telephone', Telephone); // je stocke  dans le div en cas d'annulation
             div.data('DateNaissance', DateNaissance); // je stocke  dans le div en cas d'annulation
             div.data('Email', Email); // je stocke  dans le div en cas d'annulation
- 
+
             div.empty();
 
             var input = $('<input type="text" placeholder="ENTRER NOUVEAU MAIL"/>').val(span.text());
@@ -236,7 +236,7 @@
             let Telephoneclient = Client.Telephone;
             let DateNaissanceclient = Client.DateNaissance;
             /*let Emailc = "kjjk@f.com";
-            
+
             nom = Client.Nom;
             prenom = Client.Prenom;
             adresse = Client.Adresse;
@@ -249,12 +249,12 @@
                 url: '/api/Clients/' + idClient,
                 data: {
                     ID: idClient,
-         
+
                     nom: nomclient,
                     prenom: Prenomclient,
-                    adresse : Adresseclient,
-                    civilite : Civiliteclient,
-                    Telephone : Telephoneclient,
+                    adresse: Adresseclient,
+                    civilite: Civiliteclient,
+                    Telephone: Telephoneclient,
                     DateNaissance: DateNaissanceclient,
                     Email: Emailclient
                 },

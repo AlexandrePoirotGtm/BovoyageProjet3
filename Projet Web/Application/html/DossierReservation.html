@@ -102,7 +102,7 @@
             </div>
 
         </form>
-        
+
         <div class="collapse" id="collapseParticipant">
             <form id="form2">
                 <div class="form-group">
@@ -175,201 +175,201 @@
             </form>
         </div>
     </div>
-    
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
 
-            <script>
-                var idDossier;
-                function getParticipants() {
-                    var divListeParticipants = $('#listeParticipants');
-                    var myurl = "/api/Participants"
-                    console.log(myurl)
-
-                    $.ajax({
-                        url: myurl,
-                        success: function (Participants) {
-                            divListeParticipants.empty();
-                            if (Participants.length > 0) {
-                                for (Participant of Participants) {
-                                    if (Participant.IDDossierReservation == idDossier) {
-
-                                    
-                                        var divParticipant = $('<span class="Participant alert-info" style="margin:5px"></span>');
-                                    divParticipant.attr("data-id", Participant.ID);
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
 
+    <script>
+        var idDossier;
+        function getParticipants() {
+            var divListeParticipants = $('#listeParticipants');
+            var myurl = "/api/Participants"
+            console.log(myurl)
 
-                                    var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
-                                    buttonDelete.on('click', function () {
-                                        var idParticipant = $(this).closest('.Participant').data('id');
-                                        SupprimerParticipant(idParticipant);
-                                    });
+            $.ajax({
+                url: myurl,
+                success: function (Participants) {
+                    divListeParticipants.empty();
+                    if (Participants.length > 0) {
+                        for (Participant of Participants) {
+                            if (Participant.IDDossierReservation == idDossier) {
+
+
+                                var divParticipant = $('<span class="Participant alert-info" style="margin:5px"></span>');
+                                divParticipant.attr("data-id", Participant.ID);
 
 
 
-                                    divParticipant.append(buttonDelete);
-                                    divParticipant.append($('<span></span>').text(Participant.Civilite + " " + Participant.Prenom + " " + Participant.Nom));
+                                var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
+                                buttonDelete.on('click', function () {
+                                    var idParticipant = $(this).closest('.Participant').data('id');
+                                    SupprimerParticipant(idParticipant);
+                                });
 
-                                    divListeParticipants.append(divParticipant);
-                                    }
-                                }
-                            } else {
-                                divListeParticipants.append($('<p class="lead">Aucun Participant pour le moment...</p>'));
+
+
+                                divParticipant.append(buttonDelete);
+                                divParticipant.append($('<span></span>').text(Participant.Civilite + " " + Participant.Prenom + " " + Participant.Nom));
+
+                                divListeParticipants.append(divParticipant);
                             }
-                        },
-                        error: function () {
-                            alert('Probleme envoie');
                         }
-                    });
-                }
-
-                function Valider() {
-                    var form = $('#form');
-                    let estValide = form[0].checkValidity();
-                    form.addClass("was-validated");
-
-                    return estValide;
-                }
-
-                function Valider2() {
-                    var form = $('#form2');
-                    let estValide = form[0].checkValidity();
-                    form.addClass("was-validated");
-
-                    return estValide;
-                }
-
-                function Enregistrer() {
-                    if (!Valider()) {
-                        return false;
+                    } else {
+                        divListeParticipants.append($('<p class="lead">Aucun Participant pour le moment...</p>'));
                     }
-
-                    let DossierReservation = {
-                        NumeroCarteBancaire: $('#NumeroCarteBancaire').val(),
-                        PrixParPersonne: $('#PrixParPersonne').val(),
-                        EtatDossierReservation: $('#EtatDossierReservation').val(),
-                        IDVoyage: $('#IDVoyage').val(),
-                        IDClient: $('#IDClient').val()
-                    };
-                    $.ajax({
-                        type: 'POST',
-                        url: '/api/DossierReservations',
-                        data: DossierReservation,
-                        success: function (dossier) {
-                            $('form')[0].reset();
-                            $('form').removeClass('was-validated');
-                            $('#bouton').addClass('collapse');
-                            $('#boutonAnnuler').addClass('collapse');
-                            $('#collapseParticipant').removeClass('collapse');
-
-                            idDossier = dossier.ID;
-                        },
-                        error: function () {
-                            alert('Probleme envoie');
-                        }
-                    });
-
-                    return false;
+                },
+                error: function () {
+                    alert('Probleme envoie');
                 }
+            });
+        }
 
-                function LoadVoyage() {
-                    $.ajax({
-                        url: '/api/Voyages',
-                        success: function (Voyages) {
-                            var select = $("#IDVoyage");
-                            select.empty();
-                            select.append($('<option></option>')); // élément vide
+        function Valider() {
+            var form = $('#form');
+            let estValide = form[0].checkValidity();
+            form.addClass("was-validated");
 
-                            for (Voyage of Voyages) {
-                                var option = $('<option></option>');
-                                option.val(Voyage.ID);
-                                option.text(Voyage.Destination.Region);
-                                select.append(option);
-                            }
-                        }
-                    });
+            return estValide;
+        }
+
+        function Valider2() {
+            var form = $('#form2');
+            let estValide = form[0].checkValidity();
+            form.addClass("was-validated");
+
+            return estValide;
+        }
+
+        function Enregistrer() {
+            if (!Valider()) {
+                return false;
+            }
+
+            let DossierReservation = {
+                NumeroCarteBancaire: $('#NumeroCarteBancaire').val(),
+                PrixParPersonne: $('#PrixParPersonne').val(),
+                EtatDossierReservation: $('#EtatDossierReservation').val(),
+                IDVoyage: $('#IDVoyage').val(),
+                IDClient: $('#IDClient').val()
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/api/DossierReservations',
+                data: DossierReservation,
+                success: function (dossier) {
+                    $('form')[0].reset();
+                    $('form').removeClass('was-validated');
+                    $('#bouton').addClass('collapse');
+                    $('#boutonAnnuler').addClass('collapse');
+                    $('#collapseParticipant').removeClass('collapse');
+
+                    idDossier = dossier.ID;
+                },
+                error: function () {
+                    alert('Probleme envoie');
                 }
+            });
 
-                function LoadClient() {
-                    $.ajax({
-                        url: '/api/Clients',
-                        success: function (Clients) {
-                            var select = $("#IDClient");
-                            select.empty();
-                            select.append($('<option></option>')); // élément vide
+            return false;
+        }
 
-                            for (Client of Clients) {
-                                var option = $('<option></option>');
-                                option.val(Client.ID);
-                                option.text(Client.Prenom + " " + Client.Nom);
-                                select.append(option);
-                            }
-                        }
-                    });
-                }
+        function LoadVoyage() {
+            $.ajax({
+                url: '/api/Voyages',
+                success: function (Voyages) {
+                    var select = $("#IDVoyage");
+                    select.empty();
+                    select.append($('<option></option>')); // élément vide
 
-                function Ajouter() {
-                    if (!Valider2()) {
-                        return false;
+                    for (Voyage of Voyages) {
+                        var option = $('<option></option>');
+                        option.val(Voyage.ID);
+                        option.text(Voyage.Destination.Region);
+                        select.append(option);
                     }
-
-                    let participant = {
-                        Civilite: $('#Civilite').val(),
-                        Nom: $('#Nom').val(),
-                        Prenom: $('#Prenom').val(),
-                        Adresse: $('#Adresse').val(),
-                        Telephone: $('#Telephone').val(),
-                        DateNaissance: $('#DateNaissance').val(),
-                        IDDossierReservation: idDossier,
-                    };
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/api/participants',
-                        data: participant,
-                        success: function () {
-                            $('#form2')[0].reset();
-                            $('#form2').removeClass('was-validated');
-                            $('#bouton3').removeClass('collapse');
-                            getParticipants();
-                            
-                        },
-                        error: function () {
-                            alert('Probleme envoie');
-                        }
-                    });
-
-                    return false;
                 }
+            });
+        }
 
-                function Fini() {
-                    window.location.href = '../html/DossierReservations.html';
+        function LoadClient() {
+            $.ajax({
+                url: '/api/Clients',
+                success: function (Clients) {
+                    var select = $("#IDClient");
+                    select.empty();
+                    select.append($('<option></option>')); // élément vide
+
+                    for (Client of Clients) {
+                        var option = $('<option></option>');
+                        option.val(Client.ID);
+                        option.text(Client.Prenom + " " + Client.Nom);
+                        select.append(option);
+                    }
                 }
+            });
+        }
 
-                function SupprimerParticipant(id, div) {
-                    $.ajax({
-                        type: 'DELETE',
-                        url: '/api/Participants/' + id,
-                        success: function () {
-                            getParticipants();
-                        },
-                        error: function () {
-                            alert('Probleme suppression');
-                        }
-                    });
+        function Ajouter() {
+            if (!Valider2()) {
+                return false;
+            }
+
+            let participant = {
+                Civilite: $('#Civilite').val(),
+                Nom: $('#Nom').val(),
+                Prenom: $('#Prenom').val(),
+                Adresse: $('#Adresse').val(),
+                Telephone: $('#Telephone').val(),
+                DateNaissance: $('#DateNaissance').val(),
+                IDDossierReservation: idDossier,
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/participants',
+                data: participant,
+                success: function () {
+                    $('#form2')[0].reset();
+                    $('#form2').removeClass('was-validated');
+                    $('#bouton3').removeClass('collapse');
+                    getParticipants();
+
+                },
+                error: function () {
+                    alert('Probleme envoie');
                 }
+            });
 
-                $(document).ready(getParticipants);
-                LoadClient();
-                LoadVoyage();
-                $(document).ready(function () {
-                    $('#NumeroCarteBancaire').focus(); // Sans jquery: document.getElementById('Nom').focus();
-                });
+            return false;
+        }
 
-            </script>
+        function Fini() {
+            window.location.href = '../html/DossierReservations.html';
+        }
+
+        function SupprimerParticipant(id, div) {
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/Participants/' + id,
+                success: function () {
+                    getParticipants();
+                },
+                error: function () {
+                    alert('Probleme suppression');
+                }
+            });
+        }
+
+        $(document).ready(getParticipants);
+        LoadClient();
+        LoadVoyage();
+        $(document).ready(function () {
+            $('#NumeroCarteBancaire').focus(); // Sans jquery: document.getElementById('Nom').focus();
+        });
+
+    </script>
 
 </body>
 
