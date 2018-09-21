@@ -58,7 +58,7 @@
 
             <div class="form-group">
                 <label for="EtatDossierReservation">EtatDossierReservation*</label>
-                <select class="form-control" id="EtatDossierReservation " value="EnAttente" required>
+                <select class="form-control" id="EtatDossierReservation" value="EnAttente" required>
                     <option value="EnAttente">EnAttente</option>
                     <option value="EnCours">EnCours</option>
                     <option value="Refusee">Refusee</option>
@@ -120,10 +120,8 @@
                 NumeroCarteBancaire: $('#NumeroCarteBancaire').val(),
                 PrixParPersonne: $('#PrixParPersonne').val(),
                 EtatDossierReservation: $('#EtatDossierReservation').val(),
-                RaisonAnnulationDossier: $('#RaisonAnnulationDossier').val(),
-                /*Adresse: $('#Adresse').val(),
-                Telephone: $('#Telephone').val(),
-                DateNaissance: $('#DateNaissance').val(),*/
+                IDVoyage: $('#IDVoyage').val(),
+                IDClient: $('#IDClient').val()
             };
 
             $.ajax({
