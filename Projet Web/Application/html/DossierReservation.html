@@ -96,11 +96,13 @@
             </div>
 
             <div class="actions">
-                <button class="btn btn-primary" id="bouton" onclick="return Enregistrer();" type="button" data-toggle="collapse" data-target="#collapseParticipant" aria-expanded="false" aria-controls="collapseParticipant">Enregistrer</button>
+                <button class="btn btn-primary" id="bouton" onclick="return Enregistrer();" type="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseParticipant">Enregistrer</button>
+                <button class="btn btn-primary collapse" id="bouton3" onclick="return Fini();" type="button">Valider</button>
                 <a href="/" id="#boutonAnnuler" class="btn btn-light">Annuler</a>
             </div>
 
         </form>
+        
         <div class="collapse" id="collapseParticipant">
             <form id="form2">
                 <div class="form-group">
@@ -171,8 +173,10 @@
                     </div>
                 </div>
             </form>
-            </div>
-            </div>
+        </div>
+    </div>
+    
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
@@ -259,6 +263,8 @@
                             $('form').removeClass('was-validated');
                             $('#bouton').addClass('collapse');
                             $('#boutonAnnuler').addClass('collapse');
+                            $('#collapseParticipant').removeClass('collapse');
+
                             idDossier = dossier.ID;
                         },
                         error: function () {
@@ -327,9 +333,9 @@
                         success: function () {
                             $('#form2')[0].reset();
                             $('#form2').removeClass('was-validated');
-                            //window.location.href = '/index.html';
+                            $('#bouton3').removeClass('collapse');
                             getParticipants();
-
+                            
                         },
                         error: function () {
                             alert('Probleme envoie');
@@ -337,6 +343,10 @@
                     });
 
                     return false;
+                }
+
+                function Fini() {
+                    window.location.href = '../html/DossierReservations.html';
                 }
 
                 function SupprimerParticipant(id, div) {
