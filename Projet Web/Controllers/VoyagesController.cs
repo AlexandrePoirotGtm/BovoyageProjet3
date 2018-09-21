@@ -106,7 +106,6 @@ namespace Projet_Web.Controllers
             {
                 return NotFound();
             }
-
             db.Voyages.Remove(voyage);
             db.SaveChanges();
 

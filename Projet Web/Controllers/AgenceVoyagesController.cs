@@ -112,7 +112,6 @@ namespace Projet_Web.Controllers
                     return BadRequest("à un ou des voyages");
             }
             db.AgencesVoyages.Remove(agenceVoyage);
-            db.AgencesVoyages.Remove(agenceVoyage);
             db.SaveChanges();
 
             return Ok(agenceVoyage);

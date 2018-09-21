@@ -133,8 +133,11 @@
                 PrixParPersonne: $('#PrixParPersonne').val(),
                 IDDestination: $('#IDDestination').val(),
                 IDAgenceVoyage: $('#IDAgenceVoyage').val(),
-                
             };
+            if (DateRetour < DateAller) {
+                alert("La date de retour est avant la date de départ");
+                return false;
+            }
             console.log($('#IDDestination').val());
 
             $.ajax({
