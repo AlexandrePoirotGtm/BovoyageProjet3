@@ -96,7 +96,7 @@
             if ($("#inputrecherche").val())
                 var myurl = "/api/DossierReservations/" + $("#inputrecherche").val();
             else
-            var myurl = "/api/DossierReservations"
+                var myurl = "/api/DossierReservations"
             console.log(myurl)
             setLoader(divListeDossierReservations);
 
@@ -113,33 +113,21 @@
 
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
-                                // Affichage d'une confirmation
-                                $.bsAlert.confirmTitle = 'Suppression';
-                                $.bsAlert.closeDisplay = 'Non';
-                                $.bsAlert.sureDisplay = 'Oui';
-                                $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".DossierReservation");
-                                    var idDossierReservation = div.attr("data-id");
-                                    SupprimerDossierReservation(idDossierReservation, div);
-                                });
+                                var idDossierReservation = $(this).closest('.DossierReservation').data('id');
+                                SupprimerDossierReservation(idDossierReservation);
                             });
 
+                            divDossierReservation.append(buttonDelete);
                             divDossierReservation.append($('<label></label>').text("NumeroCarteBancaire : " + DossierReservation.NumeroCarteBancaire));
                             divDossierReservation.append($('<br>'));
                             divDossierReservation.append($('<label></label>').text("PrixParPersonne : " + DossierReservation.PrixParPersonne));
                             divDossierReservation.append($('<br>'));
                             divDossierReservation.append($('<label></label>').text("EtatDossierReservation : " + DossierReservation.EtatDossierReservation));
                             divDossierReservation.append($('<br>'));
-                            divDossierReservation.append($('<label></label>').text("RaisonAnnulationDossier  :" + DossierReservation.RaisonAnnulationDossier ));
+                            divDossierReservation.append($('<label></label>').text("RaisonAnnulationDossier  :" + DossierReservation.RaisonAnnulationDossier));
                             divDossierReservation.append($('<br>'));
-                            /*divDossierReservation.append($('<label></label>').text("Adresse: " +DossierReservation.Adresse));
+                            divDossierReservation.append($('<label></label>').text("Client: " + DossierReservation.Client.Nom));
                             divDossierReservation.append($('<br>'));
-                            divDossierReservation.append($('<label></label>').text("Telephone: " +DossierReservation.Telephone));
-                            divDossierReservation.append($('<br>'));
-                            divDossierReservation.append($('<label></label>').text("DateNaissance: " +DossierReservation.DateNaissance));
-                            divDossierReservation.append($('<br>'));*/
-                            divDossierReservation.append(buttonDelete);
-
                             divListeDossierReservations.append(divDossierReservation);
                         }
                     } else {
