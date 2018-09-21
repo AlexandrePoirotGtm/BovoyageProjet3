@@ -99,7 +99,14 @@ namespace Projet_Web.Controllers
             }
 
             db.Assurances.Remove(assurance);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+                return (BadRequest("Assurances à des dossiers"));
+            }
 
             return Ok(assurance);
         }

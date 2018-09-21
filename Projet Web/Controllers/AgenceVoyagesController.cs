@@ -107,13 +107,15 @@ namespace Projet_Web.Controllers
             {
                 return NotFound();
             }
-            foreach (Voyage voyage in db.Voyages)
-            {
-                if (voyage.IDAgenceVoyage == agenceVoyage.ID)
-                    return BadRequest("à un ou des voyages");
-            }
             db.AgencesVoyages.Remove(agenceVoyage);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+                return (BadRequest("L'agence a encore des voyages"));
+            }
 
             return Ok(agenceVoyage);
         }

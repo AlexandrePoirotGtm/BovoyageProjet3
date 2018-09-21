@@ -107,14 +107,16 @@ namespace Projet_Web.Controllers
             if (client == null)
             {
                 return NotFound();
-            }
-            foreach(DossierReservation dossier in db.DossiersReservations)
-            {
-                if(dossier.IDClient == client.ID)
-                    return BadRequest("à un dossier");
-            }                
+            }             
             db.Clients.Remove(client);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+                return (BadRequest("Le client a encore des reservations"));
+            }
 
             return Ok(client);
         }

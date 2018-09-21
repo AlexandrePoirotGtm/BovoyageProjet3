@@ -98,7 +98,14 @@ namespace Projet_Web.Controllers
             }
 
             db.Participants.Remove(participant);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+                return (BadRequest("Problème participants"));
+            }
 
             return Ok(participant);
         }

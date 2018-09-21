@@ -34,7 +34,7 @@ namespace Projet_Web.Controllers
                 .Include(x => x.Client)
                 .Include(x => x.Participants)
                 .Include(x => x.Voyage)
-                .SingleOrDefault(x => x.ID == id); 
+                .SingleOrDefault(x => x.ID == id);
             if (dossierReservation == null)
             {
                 return NotFound();
@@ -105,8 +105,14 @@ namespace Projet_Web.Controllers
             }
 
             db.DossiersReservations.Remove(dossierReservation);
-            db.SaveChanges();
-
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+                return (BadRequest("Le dossier a encore des participants"));
+            }
             return Ok(dossierReservation);
         }
 
