@@ -75,8 +75,8 @@
     <div class="container-fluid">
         <ul class="toolbar">
             <li><a href="/application/html/Assurance.html" class="btn btn-primary">Nouvelle Assurance</a></li>
-            <!--recherche inutile pour assurance <li><input type="text" id="inputrecherche" name="recherche" value="" placeholder="recherche" /></li>-->
-            <li> <button onclick=getAssurances()>recherche</button>    </li>
+            <!--recherche inutile pour assurance <li><input type="text" id="inputrecherche" name="recherche" value="" placeholder="recherche" /></li>
+            <li> <button onclick=getAssurances()>recherche</button>    </li>-->
         </ul>
         <div id="listeAssurances">
         </div>
@@ -93,9 +93,6 @@
 
         function getAssurances() {
             var divListeAssurances = $('#listeAssurances');
-            if ($("#inputrecherche").val())
-                var myurl = "/api/Assurances/" + $("#inputrecherche").val();
-            else
             var myurl = "/api/Assurances"
             console.log(myurl)
             setLoader(divListeAssurances);
