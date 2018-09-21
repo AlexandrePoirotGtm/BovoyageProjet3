@@ -43,6 +43,15 @@ namespace Projet_Web.Controllers
             return Ok(dossierReservation);
         }
 
+        // GET: api/Destinations/Search
+        [ResponseType(typeof(DossierReservation))]
+        [Route("api/DossierReservations/{Filter}")]
+        [HttpGet]
+        public IQueryable<DossierReservation> GetDossiersReservationsFilter(string Filter)
+        {
+            return db.DossiersReservations.Where(x => x.Client.Nom.Contains(Filter));
+        }
+
         // PUT: api/DossierReservations/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDossierReservation(int id, DossierReservation dossierReservation)
