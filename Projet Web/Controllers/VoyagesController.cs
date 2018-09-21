@@ -24,6 +24,7 @@ namespace Projet_Web.Controllers
         }
 
         // GET: api/Voyages/5
+        [Route("api/Voyages/{id:int}")]
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult GetVoyage(int id)
         {
@@ -38,6 +39,14 @@ namespace Projet_Web.Controllers
             return Ok(voyage);
         }
 
+        // GET: api/Voyages/Search
+       /* [ResponseType(typeof(Voyage))]
+        [Route("api/Voyages/{Filter}")]
+        [HttpGet]
+        public IQueryable<Voyage> GetVoyagesFilter(string Filter)
+        {
+            return db.Voyages.Where(x => x.Date.Contains(Filter)); chercher voyage par date
+        }*/
         // PUT: api/Voyages/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)

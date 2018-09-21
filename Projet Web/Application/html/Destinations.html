@@ -90,9 +90,9 @@
 
         function getDestinations() {
             var divListeDestinations = $('#listeDestinations');
-            /*if ($("#inputrecherche").val())
-                var myurl = "/api/Destinations" + $("#inputrecherche").val();
-            else*/
+            if ($("#inputrecherche").val())
+                var myurl = "/api/Destinations/" + $("#inputrecherche").val();
+            else
             var myurl = "/api/Destinations"
             console.log(myurl)
             setLoader(divListeDestinations);

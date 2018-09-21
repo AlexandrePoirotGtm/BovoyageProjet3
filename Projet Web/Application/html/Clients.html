@@ -90,9 +90,9 @@
 
         function getClients() {
             var divListeClients = $('#listeClients');
-            /*if ($("#inputrecherche").val())
-                var myurl = "/api/Clients" + $("#inputrecherche").val();
-            else*/
+            if ($("#inputrecherche").val())
+                var myurl = "/api/Clients/" + $("#inputrecherche").val();
+            else
             var myurl = "/api/Clients"
             console.log(myurl)
             setLoader(divListeClients);

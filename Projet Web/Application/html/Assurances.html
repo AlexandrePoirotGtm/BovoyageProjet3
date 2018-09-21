@@ -90,9 +90,9 @@
 
         function getAssurances() {
             var divListeAssurances = $('#listeAssurances');
-            /*if ($("#inputrecherche").val())
-                var myurl = "/api/Assurances" + $("#inputrecherche").val();
-            else*/
+            if ($("#inputrecherche").val())
+                var myurl = "/api/Assurances/" + $("#inputrecherche").val();
+            else
             var myurl = "/api/Assurances"
             console.log(myurl)
             setLoader(divListeAssurances);

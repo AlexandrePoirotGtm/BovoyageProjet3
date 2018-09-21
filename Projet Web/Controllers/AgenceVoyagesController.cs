@@ -24,6 +24,7 @@ namespace Projet_Web.Controllers
         }
 
         // GET: api/AgenceVoyages/5
+        [Route("api/AgenceVoyages/{id:int}")]
         [ResponseType(typeof(AgenceVoyage))]
         public IHttpActionResult GetAgenceVoyage(int id)
         {
@@ -35,6 +36,15 @@ namespace Projet_Web.Controllers
             }
 
             return Ok(agenceVoyage);
+        }
+
+        // GET: api/AgenceVoyages/Search
+        [ResponseType(typeof(AgenceVoyage))]
+        [Route("api/AgenceVoyages/{Filter}")]
+        [HttpGet]
+        public IQueryable<AgenceVoyage> GetAgenceVoyageFilter(string Filter)
+        {
+            return db.AgencesVoyages.Where(x => x.Nom.Contains(Filter));
         }
 
         // PUT: api/AgenceVoyages/5

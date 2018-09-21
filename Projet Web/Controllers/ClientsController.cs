@@ -24,6 +24,7 @@ namespace Projet_Web.Controllers
         }
 
         // GET: api/Clients/5
+        [Route("api/Clients/{id:int}")]
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
         {
@@ -35,6 +36,16 @@ namespace Projet_Web.Controllers
             }
 
             return Ok(client);
+        }
+
+        // GET: api/Clients/Search
+        [ResponseType(typeof(Client))]
+        [Route("api/Clients/{Filter}")]
+        [HttpGet]
+        public IQueryable<Client> GetClientsFilter(string Filter)
+        {
+            //return db.Clients.Include(x => x.Nom).Where(x => x.Nom.Contains(Filter));
+            return db.Clients.Where(x => x.Nom.Contains(Filter));
         }
 
         // PUT: api/Clients/5
@@ -81,7 +92,7 @@ namespace Projet_Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Clients.Add(client);
+            db.Client.Add(client);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = client.ID }, client);
@@ -91,7 +102,7 @@ namespace Projet_Web.Controllers
         [ResponseType(typeof(Client))]
         public IHttpActionResult DeleteClient(int id)
         {
-            Client client = db.Clients.Find(id);
+            Client client = db.Client.Find(id);
             if (client == null)
             {
                 return NotFound();
@@ -101,7 +112,7 @@ namespace Projet_Web.Controllers
                 if(dossier.IDClient == client.ID)
                     return BadRequest("à un dossier");
             }                
-            db.Clients.Remove(client);
+            db.Client.Remove(client);
             db.SaveChanges();
 
             return Ok(client);
@@ -118,7 +129,7 @@ namespace Projet_Web.Controllers
 
         private bool ClientExists(int id)
         {
-            return db.Clients.Count(e => e.ID == id) > 0;
+            return db.Client.Count(e => e.ID == id) > 0;
         }
     }
 }

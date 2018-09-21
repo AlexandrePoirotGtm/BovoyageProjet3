@@ -91,9 +91,9 @@
 
         function getAgenceVoyages() {
             var divListeAgenceVoyages = $('#listeAgenceVoyages');
-            /*if ($("#inputrecherche").val())
-                var myurl = "/api/AgenceVoyages" + $("#inputrecherche").val();
-            else*/
+            if ($("#inputrecherche").val())
+                var myurl = "/api/AgenceVoyages/" + $("#inputrecherche").val();
+            else
             var myurl = "/api/AgenceVoyages"
             console.log(myurl)
             setLoader(divListeAgenceVoyages);
