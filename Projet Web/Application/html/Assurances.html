@@ -66,6 +66,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/application/html/Assurances.html">Assurances<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/application/html/DossierReservations.html">Reservations</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -122,9 +125,9 @@
                             });
 
 
-                            divAssurance.append($('<label></label>').text(Assurance.TypeAssurance));
+                            divAssurance.append($('<label></label>').text("Type d'asssurance: " +Assurance.TypeAssurance));
                             divAssurance.append($('<br>'));
-                            divAssurance.append($('<label></label>').text(Assurance.Montant));
+                            divAssurance.append($('<label></label>').text("Montant: " +Assurance.Montant));
                             divAssurance.append($('<br>'));
                             divAssurance.append(buttonDelete);
 
