@@ -40,7 +40,7 @@ namespace Projet_Web.Controllers
         [ResponseType(typeof(Destination))]
         [Route("api/Destinations/{Filter}")]
         [HttpGet]
-        public IQueryable<Destination> GetClientsFilter(string Filter)
+        public IQueryable<Destination> GetDestinationsFilter(string Filter)
         {
             //return db.Clients.Include(x => x.Nom).Where(x => x.Nom.Contains(Filter));
             return db.Destinations.Where(x => x.Region.Contains(Filter));

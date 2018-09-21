@@ -128,8 +128,7 @@
                             divVoyage.append($('<br>'));
                             divVoyage.append($('<label></label>').text("Prix Par Personne: " + Voyage.PrixParPersonne));
                             divVoyage.append($('<br>'));
-                            if (!$("#inputrecherche").val())
-                                divVoyage.append($('<label></label>').text("Destination: " + Voyage.Destination.Region));
+                            divVoyage.append($('<label></label>').text("Destination: " + Voyage.Destination.Region));
                             divVoyage.append($('<br>'));
                             divListeVoyages.append(divVoyage);
                         }

@@ -49,7 +49,7 @@ namespace Projet_Web.Controllers
         [HttpGet]
         public IQueryable<DossierReservation> GetDossiersReservationsFilter(string Filter)
         {
-            return db.DossiersReservations.Where(x => x.Client.Nom.Contains(Filter));
+            return db.DossiersReservations.Include(x=>x.Client).Where(x => x.Client.Nom.Contains(Filter));
         }
 
         // PUT: api/DossierReservations/5

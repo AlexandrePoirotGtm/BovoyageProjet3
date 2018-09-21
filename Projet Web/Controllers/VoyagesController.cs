@@ -45,7 +45,7 @@ namespace Projet_Web.Controllers
         [HttpGet]
         public IQueryable<Voyage> GetVoyagesFilter(string Filter)
         {
-            return db.Voyages.Where(x => x.Destination.Region.Contains(Filter));
+            return db.Voyages.Include(x => x.Destination).Where(x => x.Destination.Region.Contains(Filter));
         }
         // PUT: api/Voyages/5
         [ResponseType(typeof(void))]

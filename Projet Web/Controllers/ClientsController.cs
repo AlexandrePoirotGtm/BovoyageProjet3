@@ -44,7 +44,6 @@ namespace Projet_Web.Controllers
         [HttpGet]
         public IQueryable<Client> GetClientsFilter(string Filter)
         {
-            //return db.Clients.Include(x => x.Nom).Where(x => x.Nom.Contains(Filter));
             return db.Clients.Where(x => x.Nom.Contains(Filter));
         }
 
