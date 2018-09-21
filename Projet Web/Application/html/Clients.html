@@ -121,20 +121,19 @@
                                 });
                             });
 
-
-                            divClient.append($('<label></label>').text(Client.Email));
+                            divClient.append($('<label></label>').text("Civilite: " +Client.Civilite));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Civilite));
+                            divClient.append($('<label></label>').text("Nom: " +Client.Nom));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Nom));
+                            divClient.append($('<label></label>').text("Prenom: " +Client.Prenom));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Prenom));
+                            divClient.append($('<label></label>').text("Email :" + Client.Email));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Adresse));
+                            divClient.append($('<label></label>').text("Adresse: " +Client.Adresse));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Telephone));
+                            divClient.append($('<label></label>').text("Telephone: " +Client.Telephone));
                             divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.DateNaissance));
+                            divClient.append($('<label></label>').text("DateNaissance: " +Client.DateNaissance));
                             divClient.append($('<br>'));
                             divClient.append(buttonDelete);
 
