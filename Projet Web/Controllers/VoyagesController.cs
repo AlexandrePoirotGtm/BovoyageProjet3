@@ -40,13 +40,13 @@ namespace Projet_Web.Controllers
         }
 
         // GET: api/Voyages/Search
-       /* [ResponseType(typeof(Voyage))]
+        [ResponseType(typeof(Voyage))]
         [Route("api/Voyages/{Filter}")]
         [HttpGet]
         public IQueryable<Voyage> GetVoyagesFilter(string Filter)
         {
-            return db.Voyages.Where(x => x.Date.Contains(Filter)); chercher voyage par date
-        }*/
+            return db.Voyages.Where(x => x.Destination.Region.Contains(Filter));
+        }
         // PUT: api/Voyages/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutVoyage(int id, Voyage voyage)
