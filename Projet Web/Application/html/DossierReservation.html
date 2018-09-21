@@ -95,74 +95,78 @@
                 </div>
             </div>
 
-            <div class="form-group">
-               <label for="Participant">Participants</label> 
-                <div id="listeParticipants" style="flex-direction:row">
-                    
-                </div>
-                <span>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCategorie" aria-expanded="false" aria-controls="collapseCategorie" style="margin-top:15px">
-                        Ajouter un Participant
-                    </button>
-                </span>
-                <div class="collapse" id="collapseCategorie">
-                    <div class="card card-body">
-                        <div class="form-group">
-                            <label for="Civilite">Civilité*</label>
-                            <select class="form-control" id="Civilite" value="Mlle" required>
-                                <option value="M">M</option>
-                                <option value="Mme">Mme</option>
-                                <option value="Mlle">Mlle</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Champ requis
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Nom">Nom*</label>
-                            <input type="text" class="form-control" id="Nom" placeholder="Nom du Participant" required />
-                            <div class="invalid-feedback">
-                                Champ requis
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="Prenom">Prénom*</label>
-                            <input type="text" class="form-control" id="Prenom" placeholder="Prénom du Participant" required />
-                            <div class="invalid-feedback">
-                                Champ requis
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Adresse">Adresse*</label>
-                            <input type="text" class="form-control" id="Adresse" placeholder="Adresse du Participant" required />
-                            <div class="invalid-feedback">
-                                Champ requis
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Telephone">Telephone*</label>
-                            <input type="number" class="form-control" id="Telephone" value="06" required />
-                            <div class="invalid-feedback">
-                                Numéro requis
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="DateNaissance">Date de Naissance </label>
-                            <input type="date" class="form-control" id="DateNaissance" value="2000-01-01" required />
-                            <div class="invalid-feedback">
-                                Date requise
-                            </div>
-                        </div>
-                        <button id="SaveButton" class="btn btn-primary" onclick="Ajouter()">Ajouter</button>
-                    </div>
-                </div>
-            </div>
 
         </form>
+        <form id="form2">
+        <div class="form-group">
+            <label for="Participant">Participants</label>
+            <div id="listeParticipants" style="flex-direction:row">
+
+            </div>
+            <span>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCategorie" aria-expanded="false" aria-controls="collapseCategorie" style="margin-top:15px">
+                    Ajouter un Participant
+                </button>
+            </span>
+            <div class="collapse" id="collapseCategorie">
+                <div class="card card-body">
+                    <div class="form-group">
+                        <label for="Civilite">Civilité*</label>
+                        <select class="form-control" id="Civilite" value="Mlle" required>
+                            <option value="M">M</option>
+                            <option value="Mme">Mme</option>
+                            <option value="Mlle">Mlle</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Champ requis
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nom">Nom*</label>
+                        <input type="text" class="form-control" id="Nom" placeholder="Nom du Participant" required />
+                        <div class="invalid-feedback">
+                            Champ requis
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Prenom">Prénom*</label>
+                        <input type="text" class="form-control" id="Prenom" placeholder="Prénom du Participant" required />
+                        <div class="invalid-feedback">
+                            Champ requis
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Adresse">Adresse*</label>
+                        <input type="text" class="form-control" id="Adresse" placeholder="Adresse du Participant" required />
+                        <div class="invalid-feedback">
+                            Champ requis
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Telephone">Telephone*</label>
+                        <input type="number" class="form-control" id="Telephone" value="06" required />
+                        <div class="invalid-feedback">
+                            Numéro requis
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DateNaissance">Date de Naissance </label>
+                        <input type="date" class="form-control" id="DateNaissance" value="2000-01-01" required />
+                        <div class="invalid-feedback">
+                            Date requise
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="return Ajouter();">Ajouter</button>
+                </div>
+            </div>
+        </div>
+        </form>
+
         <div class="actions">
             <button class="btn btn-primary" onclick="return Enregistrer();">Enregistrer</button>
             <a href="/" class="btn btn-light">Annuler</a>
@@ -194,7 +198,7 @@
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
                                 var idParticipant = $(this).closest('.Participant').data('id');
-                                SupprimerClient(idParticipant);
+                                SupprimerParticipant(idParticipant);
                             });
 
 
@@ -216,6 +220,14 @@
 
         function Valider() {
             var form = $('form');
+            let estValide = form[0].checkValidity();
+            form.addClass("was-validated");
+
+            return estValide;
+        }
+
+        function Valider2() {
+            var form = $('#form2');
             let estValide = form[0].checkValidity();
             form.addClass("was-validated");
 
@@ -289,7 +301,7 @@
         }
 
         function Ajouter() {
-            if (!Valider()) {
+            if (!Valider2()) {
                 return false;
             }
 
@@ -301,15 +313,17 @@
                 Telephone: $('#Telephone').val(),
                 DateNaissance: $('#DateNaissance').val(),
             };
-
+            
             $.ajax({
                 type: 'POST',
                 url: '/api/participants',
                 data: participant,
                 success: function () {
-                    $('form')[0].reset();
-                    $('form').removeClass('was-validated');
+                    $('#form2')[0].reset();
+                    $('#form2').removeClass('was-validated');
                     //window.location.href = '/index.html';
+                    getParticipants();
+                    
                 },
                 error: function () {
                     alert('Probleme envoie');
@@ -319,6 +333,18 @@
             return false;
         }
 
+        function SupprimerParticipant(id, div) {
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/Participants/' + id,
+                success: function () {
+                    getParticipants();
+                },
+                error: function () {
+                    alert('Probleme suppression');
+                }
+            });
+        }
 
         $(document).ready(getParticipants);
         LoadClient();
