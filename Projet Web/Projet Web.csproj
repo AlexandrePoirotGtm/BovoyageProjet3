@@ -167,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\GTMstephane - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ProjetBoVoyagesSA - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ProjetWebSA - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
