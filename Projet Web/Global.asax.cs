@@ -7,7 +7,7 @@ using System.Web.Routing;
 
 namespace Projet_Web
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
