@@ -98,6 +98,7 @@ namespace Projet_Web.Controllers
         }
 
         // DELETE: api/Voyages/5
+        [Route("api/Voyages/{id}")]
         [ResponseType(typeof(Voyage))]
         public IHttpActionResult DeleteVoyage(int id)
         {

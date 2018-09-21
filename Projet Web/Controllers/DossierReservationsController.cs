@@ -94,6 +94,7 @@ namespace Projet_Web.Controllers
         }
 
         // DELETE: api/DossierReservations/5
+        [Route("api/DossierReservations/{id}")]
         [ResponseType(typeof(DossierReservation))]
         public IHttpActionResult DeleteDossierReservation(int id)
         {

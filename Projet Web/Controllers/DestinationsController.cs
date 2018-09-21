@@ -97,6 +97,7 @@ namespace Projet_Web.Controllers
         }
 
         // DELETE: api/Destinations/5
+        [Route("api/Destinations/{id}")]
         [ResponseType(typeof(Destination))]
         public IHttpActionResult DeleteDestination(int id)
         {

@@ -87,6 +87,7 @@ namespace Projet_Web.Controllers
         }
 
         // DELETE: api/Participants/5
+        [Route("api/Participants/{id}")]
         [ResponseType(typeof(Participant))]
         public IHttpActionResult DeleteParticipant(int id)
         {
