@@ -107,7 +107,7 @@ namespace Projet_Web.Controllers
             if (client == null)
             {
                 return NotFound();
-            }             
+            }
             db.Clients.Remove(client);
             try
             {
