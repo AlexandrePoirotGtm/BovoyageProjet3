@@ -44,19 +44,25 @@
         <form novalidate>
 
             <div class="form-group">
-                <label for="Email">Email*</label>
-                <input type="email" class="form-control" id="Email" value="Email du DossierReservation" required />
+                <label for="NumeroCarteBancaire">NumeroCarteBancaire</label>
+                <input type="text" class="form-control" id="NumeroCarteBancaire" value="4975 4654 6846 6794" />
+            </div>
+
+            <div class="form-group">
+                <label for="PrixParPersonne ">PrixParPersonne *</label>
+                <input type="number" class="form-control" id="PrixParPersonne" value="100" required />
                 <div class="invalid-feedback">
-                    Email requis
+                    Numéro requis
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="Civilite">Civilité*</label>
-                <select class="form-control" id="Civilite" value="Mlle" required>
-                    <option value="M">M</option>
-                    <option value="Mme">Mme</option>
-                    <option value="Mlle">Mlle</option>
+                <label for="EtatDossierReservation">EtatDossierReservation*</label>
+                <select class="form-control" id="EtatDossierReservation " value="EnAttente" required>
+                    <option value="EnAttente">EnAttente</option>
+                    <option value="EnCours">EnCours</option>
+                    <option value="Refusee">Refusee</option>
+                    <option value="Acceptee">Acceptee</option>
                 </select>
                 <div class="invalid-feedback">
                     Champ requis
@@ -64,42 +70,27 @@
             </div>
 
             <div class="form-group">
-                <label for="Nom">Nom*</label>
-                <input type="text" class="form-control" id="Nom" value="Nom du DossierReservation" required />
-                <div class="invalid-feedback">
-                    Champ requis
-                </div>
+                <label for="RaisonAnnulationDossier">RaisonAnnulationDossier</label>
+                <select class="form-control" id="RaisonAnnulationDossier">
+                    <option value="">N/A</option>
+                    <option value="Client">Client</option>
+                    <option value="PlacesInsuffisantes">PlacesInsuffisantes</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="Prenom">Prénom*</label>
-                <input type="text" class="form-control" id="Prenom" value="Prénom du DossierReservation" required />
-                <div class="invalid-feedback">
-                    Champ requis
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="Adresse">Adresse*</label>
-                <input type="text" class="form-control" id="Adresse" value="Adresse du DossierReservation" required />
-                <div class="invalid-feedback">
-                    Champ requis
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="Telephone">Telephone*</label>
-                <input type="number" class="form-control" id="Telephone" value="06" required />
+                <label for="IDVoyage">IDVoyage*</label>
+                <input type="number" class="form-control" id="IDVoyage" value="1" required />
                 <div class="invalid-feedback">
                     Numéro requis
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="DateNaissance">Date de Naissance </label>
-                <input type="date" class="form-control" id="DateNaissance" value="2000-01-01" required />
+                <label for="IDClient">IDClient*</label>
+                <input type="number" class="form-control" id="IDClient" value="1" required />
                 <div class="invalid-feedback">
-                    Date requise
+                    Numéro requis
                 </div>
             </div>
 
@@ -126,10 +117,10 @@
             }
 
             let DossierReservation = {
-                NumeroCarteBancaire: $('#NumeroCarteBancaire ').val(),
-                PrixParPersonne: $('#PrixParPersonne ').val(),
-                EtatDossierReservation: $('#EtatDossierReservation ').val(),
-                RaisonAnnulationDossier: $('#RaisonAnnulationDossier ').val(),
+                NumeroCarteBancaire: $('#NumeroCarteBancaire').val(),
+                PrixParPersonne: $('#PrixParPersonne').val(),
+                EtatDossierReservation: $('#EtatDossierReservation').val(),
+                RaisonAnnulationDossier: $('#RaisonAnnulationDossier').val(),
                 /*Adresse: $('#Adresse').val(),
                 Telephone: $('#Telephone').val(),
                 DateNaissance: $('#DateNaissance').val(),*/
