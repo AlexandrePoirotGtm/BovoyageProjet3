@@ -113,18 +113,12 @@
 
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
-                                // Affichage d'une confirmation
-                                $.bsAlert.confirmTitle = 'Suppression';
-                                $.bsAlert.closeDisplay = 'Non';
-                                $.bsAlert.sureDisplay = 'Oui';
-                                $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".Voyage");
-                                    var idVoyage = div.attr("data-id");
-                                    SupprimerVoyage(idVoyage, div);
-                                });
+                                var idVoyage = $(this).closest('.Voyage').data('id');
+                                SupprimerVoyage(idVoyage);
                             });
 
 
+                            divVoyage.append(buttonDelete);
                             divVoyage.append($('<label></label>').text("Date d'Aller: " +Voyage.DateAller));
                             divVoyage.append($('<br>'));
                             divVoyage.append($('<label></label>').text("Date de Retour: " +Voyage.DateRetour));
@@ -135,7 +129,6 @@
                             divVoyage.append($('<br>'));
                             divVoyage.append($('<label></label>').text("Destination: " +Voyage.IDDestination));
                             divVoyage.append($('<br>'));
-                            divVoyage.append(buttonDelete);
 
                             divListeVoyages.append(divVoyage);
                         }

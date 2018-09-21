@@ -109,26 +109,21 @@
                         for (AgenceVoyage of AgenceVoyages) {
                             var divAgenceVoyage = $('<div class="AgenceVoyage alert"></div>');
                             divAgenceVoyage.attr("data-id", AgenceVoyage.ID);
-
+                            console.log("AgenceVoyage.ID");
+                            console.log(AgenceVoyage.ID);
 
 
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
-                                // Affichage d'une confirmation
-                                $.bsAlert.confirmTitle = 'Suppression';
-                                $.bsAlert.closeDisplay = 'Non';
-                                $.bsAlert.sureDisplay = 'Oui';
-                                $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".AgenceVoyage");
-                                    var idAgenceVoyage = div.attr("data-id");
-                                    SupprimerAgenceVoyage(idAgenceVoyage, div);
-                                });
+                                var idAgenceVoyage = $(this).closest('.AgenceVoyage').data('id');
+                                SupprimerAgenceVoyage(idAgenceVoyage);
                             });
 
 
+                            divAgenceVoyage.append(buttonDelete);
+
                             divAgenceVoyage.append($('<label></label>').text("Nom: " +AgenceVoyage.Nom));
                             divAgenceVoyage.append($('<br>'));
-                            divAgenceVoyage.append(buttonDelete);
 
                             divListeAgenceVoyages.append(divAgenceVoyage);
                         }

@@ -111,25 +111,34 @@
 
 
 
-                            var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
-                            buttonDelete.on('click', function () {
-                                // Affichage d'une confirmation
-                                $.bsAlert.confirmTitle = 'Suppression';
-                                $.bsAlert.closeDisplay = 'Non';
-                                $.bsAlert.sureDisplay = 'Oui';
-                                $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".Assurance");
-                                    var idAssurance = div.attr("data-id");
-                                    SupprimerAssurance(idAssurance, div);
-                                });
-                            });
+                            //var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
+                            //buttonDelete.on('click', function () {
+                            //    // Affichage d'une confirmation
+                            //    $.bsAlert.confirmTitle = 'Suppression';
+                            //    $.bsAlert.closeDisplay = 'Non';
+                            //    $.bsAlert.sureDisplay = 'Oui';
+                            //    $.bsAlert.confirm("Es-tu sûr?", () => {
+                            //        var div = $(this).closest(".Assurance");
+                            //        var idAssurance = div.attr("data-id");
+                            //        SupprimerAssurance(idAssurance, div);
+                            //        console.log("SUPRESSION");
+                            //    });
+                            //});
 
+                            var boutonSupprimer = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
+                            boutonSupprimer.on('click', function () {
+                                var idAssurance = $(this).closest('.Assurance').data('id');
+                                SupprimerAssurance(idAssurance);
+                                console.log("SUPRESSION");
+
+                            });
+                            divAssurance.append(boutonSupprimer);
 
                             divAssurance.append($('<label></label>').text("Type d'asssurance: " +Assurance.TypeAssurance));
                             divAssurance.append($('<br>'));
                             divAssurance.append($('<label></label>').text("Montant: " +Assurance.Montant));
                             divAssurance.append($('<br>'));
-                            divAssurance.append(buttonDelete);
+                           // divAssurance.append(buttonDelete);
 
                             divListeAssurances.append(divAssurance);
                         }

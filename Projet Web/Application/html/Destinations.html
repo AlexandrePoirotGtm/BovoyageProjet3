@@ -107,24 +107,18 @@
                     if (Destinations.length > 0) {
                         for (Destination of Destinations) {
                             var divDestination = $('<div class="Destination alert"></div>');
-                            divDestination.attr("data-id", Destination.ID);
+                            divDestination.attr("data-id", Destination.Id);
 
 
 
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
-                                // Affichage d'une confirmation
-                                $.bsAlert.confirmTitle = 'Suppression';
-                                $.bsAlert.closeDisplay = 'Non';
-                                $.bsAlert.sureDisplay = 'Oui';
-                                $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".Destination");
-                                    var idDestination = div.attr("data-id");
-                                    SupprimerDestination(idDestination, div);
-                                });
+                                var idDestination = $(this).closest('.Destination').data('id');
+                                SupprimerDestination(idDestination);
                             });
 
 
+                            divDestination.append(buttonDelete);
                             divDestination.append($('<label></label>').text("Continent: " +Destination.Continent));
                             divDestination.append($('<br>'));
                             divDestination.append($('<label></label>').text("Pays: " +Destination.Pays));
@@ -133,7 +127,6 @@
                             divDestination.append($('<br>'));
                             divDestination.append($('<label></label>').text("Description: " +Destination.Description));
                             divDestination.append($('<br>'));
-                            divDestination.append(buttonDelete);
 
                             divListeDestinations.append(divDestination);
                         }
