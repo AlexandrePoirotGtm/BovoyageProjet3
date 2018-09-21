@@ -49,6 +49,7 @@ namespace Projet_Web.Controllers
         }
 
         // PUT: api/Clients/5
+        [Route("api/Clients/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClient(int id, Client client)
         {

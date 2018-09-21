@@ -118,8 +118,11 @@
                                 SupprimerClient(idClient);
                             });
 
-
-
+                            var boutonModifier = $('<button class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></button>');
+                            boutonModifier.on('click', function () {
+                                Modifier($(this));
+                            });
+                            divClient.append(boutonModifier);
                             divClient.append(buttonDelete);
                             divClient.append($('<label></label>').text("Civilite: " + Client.Civilite));
                             divClient.append($('<br>'));
@@ -163,6 +166,103 @@
             alert("Erreur !");
         }
 
+        function Modifier(bouton) {
+            var div = bouton.closest('.Client');
+
+            var span = div.find('span');
+            var Email = span.text();
+            nom = Client.Nom;
+            prenom = Client.Prenom;
+            adresse = Client.Adresse;
+            civ = Client.Civilite;
+            Telephone = Client.Telephone;
+            DateNaissance = Client.DateNaissance;
+            //Email = "kjjk@f.com";
+            div.data('nom', nom); // je stocke le nom dans le div en cas d'annulation
+            div.data('prenom', prenom); // je stocke  dans le div en cas d'annulation
+            div.data('adresse', adresse); // je stocke  dans le div en cas d'annulation
+            div.data('civ', civ); // je stocke  dans le div en cas d'annulation
+            div.data('Telephone', Telephone); // je stocke  dans le div en cas d'annulation
+            div.data('DateNaissance', DateNaissance); // je stocke  dans le div en cas d'annulation
+            div.data('Email', Email); // je stocke  dans le div en cas d'annulation
+ 
+            div.empty();
+
+            var input = $('<input type="text" placeholder="ENTRER NOUVEAU MAIL"/>').val(span.text());
+            div.append(input);
+            input.focus();
+            input.select();
+            input.on('keyup', function (event) {
+                var divClient = $(this).closest('.Client');
+                switch (event.which) {
+                    case 13:/*ENTER*/
+                        EnregistrerModification(divClient);
+                        break;
+                    case 27:/*ESCAPE*/
+                        AnnulerModification(divClient);
+                        break;
+                }
+            });
+
+            var boutonAnnuler = $('<button class="btn btn-secondary btn-sm">Annuler</button>');
+            boutonAnnuler.on('click', function () {
+                let divClient = $(this).closest('.Client');
+                AnnulerModification(divClient);
+            });
+            div.append(boutonAnnuler);
+
+            var boutonEnregistrer = $('<button class="btn btn-primary btn-sm">Enregistrer</button>');
+            boutonEnregistrer.on('click', function () {
+                EnregistrerModification($(this).closest('.Client'));
+            });
+
+            div.append(boutonEnregistrer);
+        }
+
+
+        function AnnulerModification(divClient) {
+            let idClient = divClient.data('id');
+            let nomClient = divClient.data('nom'); // nom que j'avais stocké plus haut
+            RemplirDivClient(divClient, { ID: idClient, Nom: nomClient });
+        }
+        function EnregistrerModification(divClient) {
+            let idClient = divClient.data('id');
+            let Emailclient = divClient.find('input').val();
+
+            let nomclient = Client.Nom;
+            let Prenomclient = Client.Prenom;
+            let Adresseclient = Client.Adresse;
+            let Civiliteclient = Client.Civilite;
+            let Telephoneclient = Client.Telephone;
+            let DateNaissanceclient = Client.DateNaissance;
+            /*let Emailc = "kjjk@f.com";
+            
+            nom = Client.Nom;
+            prenom = Client.Prenom;
+            adresse = Client.Adresse;
+            civ = Client.Civilite;
+            Telephone = Client.Telephone;
+            DateNaissance = Client.DateNaissance;*/
+
+            $.ajax({
+                type: 'PUT',
+                url: '/api/Clients/' + idClient,
+                data: {
+                    ID: idClient,
+         
+                    nom: nomclient,
+                    prenom: Prenomclient,
+                    adresse : Adresseclient,
+                    civilite : Civiliteclient,
+                    Telephone : Telephoneclient,
+                    DateNaissance: DateNaissanceclient,
+                    Email: Emailclient
+                },
+                success: function () {
+                    RemplirDivClient(divClient, { ID: idClient, Nom: nomClient });
+                }
+            });
+        }
 
         $(document).ready(getClients);
 

@@ -75,7 +75,7 @@
     <div class="container-fluid">
         <ul class="toolbar">
             <li><a href="/application/html/Assurance.html" class="btn btn-primary">Nouvelle Assurance</a></li>
-            <!--recherche inutile pour assurance pour le moment <li><input type="text" id="inputrecherche" name="recherche" value="" placeholder="recherche" /></li>-->
+            <!--recherche inutile pour assurance <li><input type="text" id="inputrecherche" name="recherche" value="" placeholder="recherche" /></li>-->
             <li> <button onclick=getAssurances()>recherche</button>    </li>
         </ul>
         <div id="listeAssurances">
@@ -109,22 +109,6 @@
                             var divAssurance = $('<div class="Assurance alert"></div>');
                             divAssurance.attr("data-id", Assurance.ID);
 
-
-
-                            //var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
-                            //buttonDelete.on('click', function () {
-                            //    // Affichage d'une confirmation
-                            //    $.bsAlert.confirmTitle = 'Suppression';
-                            //    $.bsAlert.closeDisplay = 'Non';
-                            //    $.bsAlert.sureDisplay = 'Oui';
-                            //    $.bsAlert.confirm("Es-tu sûr?", () => {
-                            //        var div = $(this).closest(".Assurance");
-                            //        var idAssurance = div.attr("data-id");
-                            //        SupprimerAssurance(idAssurance, div);
-                            //        console.log("SUPRESSION");
-                            //    });
-                            //});
-
                             var boutonSupprimer = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             boutonSupprimer.on('click', function () {
                                 var idAssurance = $(this).closest('.Assurance').data('id');
@@ -134,7 +118,7 @@
                             });
                             divAssurance.append(boutonSupprimer);
 
-                            divAssurance.append($('<label></label>').text("Type d'asssurance: " +Assurance.TypeAssurance));
+                            divAssurance.append($('<label></label>').text("Type d'asssurance: " +"Annulation("+Assurance.TypeAssurance+")"));
                             divAssurance.append($('<br>'));
                             divAssurance.append($('<label></label>').text("Montant: " +Assurance.Montant));
                             divAssurance.append($('<br>'));
