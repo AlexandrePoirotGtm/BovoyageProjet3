@@ -100,10 +100,14 @@
   <ItemGroup>
     <Content Include="Application\html\AgenceVoyage.html" />
     <Content Include="Application\html\AgenceVoyages.html" />
+    <Content Include="Application\html\Assurance.html" />
+    <Content Include="Application\html\Assurances.html" />
     <Content Include="Application\html\Client.html" />
     <Content Include="Application\html\Clients.html" />
     <Content Include="Application\html\Destination.html" />
     <Content Include="Application\html\Destinations.html" />
+    <Content Include="Application\html\DossierReservation.html" />
+    <Content Include="Application\html\DossierReservations.html" />
     <Content Include="Application\html\Voyage.html" />
     <Content Include="Application\html\Voyages.html" />
     <Content Include="Application\script\application.js" />

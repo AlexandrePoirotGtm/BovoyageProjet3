@@ -29,6 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/application/html/Clients.html">Clients</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/application/html/Assurances.html">Assurances</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -37,14 +40,19 @@
 
         <form novalidate>
 
+
+
             <div class="form-group">
-                <label for="Continent">Continent*</label>
-                <input type="text" class="form-control" id="Continent" value="Europe" required />
+                <label for="Description">Description</label>
+                <textarea class="form-control" id="Description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Region">Region*</label>
+                <input type="text" class="form-control" id="Region" value="Occitanie" required />
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="Pays">Pays*</label>
                 <input type="text" class="form-control" id="Pays" value="France" required />
@@ -52,19 +60,22 @@
                     Champ requis
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="Region">Region*</label>
-                <input type="text" class="form-control" id="Region" value="Ile de France" required />
+                <label for="Continent">Continent*</label>
+                <select class="form-control" id="Continent" value="Europe" required>
+                    <option value="Europe">Europe</option>
+                    <option value="Amerique du nord">Amerique du nord</option>
+                    <option value="Amerique du sud">Amerique du sud</option>
+                    <option value="Asie">Asie</option>
+                    <option value="Afrique">Afrique</option>
+                    <option value="Océanie">Océanie</option>
+                </select>
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="Description">Description</label>
-                <textarea class="form-control" id="Description" rows="3"></textarea>
-            </div>
+
 
         </form>
         <div class="actions">
@@ -115,7 +126,7 @@
 
 
         $(document).ready(function () {
-            $('#Continent').focus(); // Sans jquery: document.getElementById('Nom').focus();
+            $('#Description').focus(); // Sans jquery: document.getElementById('Nom').focus();
         });
 
     </script>

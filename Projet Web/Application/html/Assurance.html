@@ -24,30 +24,44 @@
                     <a class="nav-link" href="/application/html/Voyages.html">Voyages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/application/html/AgenceVoyages.html">AgenceVoyages<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="/application/html/AgenceVoyages.html">AgenceVoyages</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/application/html/Clients.html">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/application/html/Assurances.html">Assurances</a>
+                    <a class="nav-link active" href="/application/html/Assurances.html">Assurances<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
-        <h3>Nouvelle Agence de Voyage</h3>
+        <h3>Nouvelle Assurance</h3>
 
         <form novalidate>
-             <div class="form-group">
-                <label for="Nom">Nom*</label>
-                <input type="text" class="form-control" id="Nom" value="Nom de l'agence" required />
+
+
+
+            <div class="form-group">
+                <label for="TypeAssurance">Type d'Assurance*</label>
+                <select class="form-control" id="TypeAssurance" value="Annulation" required>
+                    <option value="Annulation">Annulation</option>
+                    <option value="Vol baggages" disabled>Vol baggages</option>
+                    <option value="intempéries" disabled>intempéries</option>
+                </select>
                 <div class="invalid-feedback">
                     Champ requis
                 </div>
             </div>
 
- 
+            <div class="form-group">
+                <label for="Montant">Montant*</label>
+                <input type="number" class="form-control" id="Montant" value="100" required />
+                <div class="invalid-feedback">
+                    Champ requis
+                </div>
+            </div>
+
         </form>
         <div class="actions">
             <button class="btn btn-primary" onclick="return Enregistrer();">Enregistrer</button>
@@ -70,14 +84,15 @@
                 return false;
             }
 
-            let AgenceVoyage = {
-                Nom: $('#Nom').val(),
+            let Assurance = {
+                TypeAssurance: $('#TypeAssurance').val(),
+                Montant: $('#Montant').val(),
             };
 
             $.ajax({
                 type: 'POST',
-                url: '/api/AgenceVoyages',
-                data: AgenceVoyage,
+                url: '/api/Assurances',
+                data: Assurance,
                 success: function () {
                     $('form')[0].reset();
                     $('form').removeClass('was-validated');
@@ -94,7 +109,7 @@
 
 
         $(document).ready(function () {
-            $('#Nom').focus(); // Sans jquery: document.getElementById('Nom').focus();
+            $('#TypeAssurance').focus(); // Sans jquery: document.getElementById('Nom').focus();
         });
 
     </script>

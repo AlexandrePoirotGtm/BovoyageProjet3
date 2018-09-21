@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/Application/style/bootstrap-alert.min.css" />
     <link rel="stylesheet" href="/Application/style/application.css" />
     <style>
-        .Client {
+        .Assurance {
             border: solid 1px lightgray;
             border-radius: 0;
             border-left: none;
@@ -21,26 +21,26 @@
             padding: 10px;
         }
 
-            .Client input[type=checkbox] {
+            .Assurance input[type=checkbox] {
                 margin-right: 8px;
             }
 
-            .Client button {
+            .Assurance button {
                 float: right;
                 display: none;
             }
 
-            .Client:hover {
+            .Assurance:hover {
                 border: solid 1px gray;
                 border-left: none;
                 border-right: none;
             }
 
-            .Client:not(.alert-success):hover {
+            .Assurance:not(.alert-success):hover {
                 background-color: whitesmoke;
             }
 
-            .Client:hover button {
+            .Assurance:hover button {
                 display: block;
             }
     </style>
@@ -61,21 +61,21 @@
                     <a class="nav-link " href="/application/html/AgenceVoyages.html">AgenceVoyages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/application/html/Clients.html">Clients<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/application/html/Clients.html">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/application/html/Assurances.html">Assurances</a>
+                    <a class="nav-link active" href="/application/html/Assurances.html">Assurances<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
         <ul class="toolbar">
-            <li><a href="/application/html/Client.html" class="btn btn-primary">Nouveau client</a></li>
+            <li><a href="/application/html/Assurance.html" class="btn btn-primary">Nouvelle Assurance</a></li>
             <li><input type="text" id="inputrecherche" name="recherche" value="" placeholder="recherche" /></li>
-            <li> <button onclick=getClients()>recherche</button>    </li>
+            <li> <button onclick=getAssurances()>recherche</button>    </li>
         </ul>
-        <div id="listeClients">
+        <div id="listeAssurances">
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -88,25 +88,25 @@
     <script>
 
 
-        function getClients() {
-            var divListeClients = $('#listeClients');
+        function getAssurances() {
+            var divListeAssurances = $('#listeAssurances');
             /*if ($("#inputrecherche").val())
-                var myurl = "/api/Clients" + $("#inputrecherche").val();
+                var myurl = "/api/Assurances" + $("#inputrecherche").val();
             else*/
-            var myurl = "/api/Clients"
+            var myurl = "/api/Assurances"
             console.log(myurl)
-            setLoader(divListeClients);
+            setLoader(divListeAssurances);
 
             $.ajax({
                 url: myurl,
-                success: function (Clients) {
-                    divListeClients.empty();
-                    if (Clients.length > 0) {
-                        for (Client of Clients) {
-                            var divClient = $('<div class="Client alert"></div>');
-                            divClient.attr("data-id", Client.ID);
+                success: function (Assurances) {
+                    divListeAssurances.empty();
+                    if (Assurances.length > 0) {
+                        for (Assurance of Assurances) {
+                            var divAssurance = $('<div class="Assurance alert"></div>');
+                            divAssurance.attr("data-id", Assurance.ID);
 
-  
+
 
                             var buttonDelete = $('<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>');
                             buttonDelete.on('click', function () {
@@ -115,33 +115,23 @@
                                 $.bsAlert.closeDisplay = 'Non';
                                 $.bsAlert.sureDisplay = 'Oui';
                                 $.bsAlert.confirm("Es-tu sûr?", () => {
-                                    var div = $(this).closest(".Client");
-                                    var idClient = div.attr("data-id");
-                                    SupprimerClient(idClient, div);
+                                    var div = $(this).closest(".Assurance");
+                                    var idAssurance = div.attr("data-id");
+                                    SupprimerAssurance(idAssurance, div);
                                 });
                             });
 
 
-                            divClient.append($('<label></label>').text(Client.Email));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Civilite));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Nom));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Prenom));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Adresse));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.Telephone));
-                            divClient.append($('<br>'));
-                            divClient.append($('<label></label>').text(Client.DateNaissance));
-                            divClient.append($('<br>'));
-                            divClient.append(buttonDelete);
+                            divAssurance.append($('<label></label>').text(Assurance.TypeAssurance));
+                            divAssurance.append($('<br>'));
+                            divAssurance.append($('<label></label>').text(Assurance.Montant));
+                            divAssurance.append($('<br>'));
+                            divAssurance.append(buttonDelete);
 
-                            divListeClients.append(divClient);
+                            divListeAssurances.append(divAssurance);
                         }
                     } else {
-                        divListeClients.append($('<p class="lead">Aucun Client pour le moment...</p>'));
+                        divListeAssurances.append($('<p class="lead">Aucune Assurance pour le moment...</p>'));
                     }
                 },
                 error: Erreur
@@ -150,12 +140,12 @@
 
 
 
-        function SupprimerClient(id, div) {
+        function SupprimerAssurance(id, div) {
             $.ajax({
                 type: 'DELETE',
-                url: '/api/Clients/' + id,
+                url: '/api/Assurances/' + id,
                 success: function () {
-                    getClients();
+                    getAssurances();
                 },
                 error: Erreur
             });
@@ -166,7 +156,7 @@
         }
 
 
-        $(document).ready(getClients);
+        $(document).ready(getAssurances);
 
     </script>
 </body>
