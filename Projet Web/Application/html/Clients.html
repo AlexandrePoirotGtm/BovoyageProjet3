@@ -204,13 +204,6 @@
                 }
             });
 
-            var boutonAnnuler = $('<button class="btn btn-secondary btn-sm">Annuler</button>');
-            boutonAnnuler.on('click', function () {
-                let divClient = $(this).closest('.Client');
-                AnnulerModification(divClient);
-            });
-            div.append(boutonAnnuler);
-
             var boutonEnregistrer = $('<button class="btn btn-primary btn-sm">Enregistrer</button>');
             boutonEnregistrer.on('click', function () {
                 EnregistrerModification($(this).closest('.Client'));
@@ -219,12 +212,6 @@
             div.append(boutonEnregistrer);
         }
 
-
-        function AnnulerModification(divClient) {
-            let idClient = divClient.data('id');
-            let nomClient = divClient.data('nom'); // nom que j'avais stocké plus haut
-            RemplirDivClient(divClient, { ID: idClient, Nom: nomClient });
-        }
         function EnregistrerModification(divClient) {
             let idClient = divClient.data('id');
             let Emailclient = divClient.find('input').val();
@@ -235,14 +222,6 @@
             let Civiliteclient = Client.Civilite;
             let Telephoneclient = Client.Telephone;
             let DateNaissanceclient = Client.DateNaissance;
-            /*let Emailc = "kjjk@f.com";
-
-            nom = Client.Nom;
-            prenom = Client.Prenom;
-            adresse = Client.Adresse;
-            civ = Client.Civilite;
-            Telephone = Client.Telephone;
-            DateNaissance = Client.DateNaissance;*/
 
             $.ajax({
                 type: 'PUT',
@@ -259,7 +238,7 @@
                     Email: Emailclient
                 },
                 success: function () {
-                    RemplirDivClient(divClient, { ID: idClient, Nom: nomClient });
+                    getClients();
                 }
             });
         }
