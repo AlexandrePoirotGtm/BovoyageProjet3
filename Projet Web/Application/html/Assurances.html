@@ -110,16 +110,12 @@
                             boutonSupprimer.on('click', function () {
                                 var idAssurance = $(this).closest('.Assurance').data('id');
                                 SupprimerAssurance(idAssurance);
-                                console.log("SUPRESSION");
-
                             });
                             divAssurance.append(boutonSupprimer);
-
                             divAssurance.append($('<label></label>').text("Type d'asssurance: " + "Annulation(" + Assurance.TypeAssurance + ")"));
                             divAssurance.append($('<br>'));
                             divAssurance.append($('<label></label>').text("Montant: " + Assurance.Montant));
                             divAssurance.append($('<br>'));
-                            // divAssurance.append(buttonDelete);
 
                             divListeAssurances.append(divAssurance);
                         }
