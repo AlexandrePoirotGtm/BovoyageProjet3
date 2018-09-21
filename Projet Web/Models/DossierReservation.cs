@@ -32,7 +32,6 @@ namespace Projet_Web.Models
         [ForeignKey("IDClient")]
         public Client Client { get; set; }
 
-    
         public List<Participant> Participants { get; set; }
 
         public List<Assurance> Assurances { get; set; }

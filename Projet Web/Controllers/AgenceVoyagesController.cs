@@ -29,7 +29,7 @@ namespace Projet_Web.Controllers
         public IHttpActionResult GetAgenceVoyage(int id)
         {
             AgenceVoyage agenceVoyage = db.AgencesVoyages.Include(XmlReadMode => XmlReadMode.Voyages)
-                                                           .SingleOrDefault(x => x.ID==id);
+                                                           .SingleOrDefault(x => x.ID == id);
             if (agenceVoyage == null)
             {
                 return NotFound();
@@ -60,7 +60,7 @@ namespace Projet_Web.Controllers
             {
                 return BadRequest();
             }
-            
+
             db.Entry(agenceVoyage).State = EntityState.Modified;
 
             try
