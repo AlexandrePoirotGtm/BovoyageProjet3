@@ -99,6 +99,7 @@ namespace Projet_Web.Controllers
         }
 
         // DELETE: api/Clients/5
+        [Route("api/Clients/{id}")]
         [ResponseType(typeof(Client))]
         public IHttpActionResult DeleteClient(int id)
         {
