@@ -60,12 +60,6 @@ namespace Projet_Web.Controllers
             {
                 return BadRequest();
             }
-                foreach (Voyage voyage in db.Voyages)
-                {
-                    if (voyage.IDAgenceVoyage == agenceVoyage.ID)
-                        return BadRequest("à un ou des voyages");
-                }
-            db.AgencesVoyages.Remove(agenceVoyage);
             
             db.Entry(agenceVoyage).State = EntityState.Modified;
 
@@ -112,7 +106,12 @@ namespace Projet_Web.Controllers
             {
                 return NotFound();
             }
-
+            foreach (Voyage voyage in db.Voyages)
+            {
+                if (voyage.IDAgenceVoyage == agenceVoyage.ID)
+                    return BadRequest("à un ou des voyages");
+            }
+            db.AgencesVoyages.Remove(agenceVoyage);
             db.AgencesVoyages.Remove(agenceVoyage);
             db.SaveChanges();
 
