@@ -77,22 +77,22 @@
                     <option value="PlacesInsuffisantes">PlacesInsuffisantes</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label for="IDVoyage">IDVoyage*</label>
-                <input type="number" class="form-control" id="IDVoyage" value="1" required />
+                <label for="IDVoyage">Voyage*</label>
+                <select class="form-control" id="IDVoyage" required></select>
                 <div class="invalid-feedback">
-                    Numéro requis
+                    Champ requis
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="IDClient">IDClient*</label>
-                <input type="number" class="form-control" id="IDClient" value="1" required />
+                <label for="IDClient">Client*</label>
+                <select class="form-control" id="IDClient" required></select>
                 <div class="invalid-feedback">
-                    Numéro requis
+                    Champ requis
                 </div>
             </div>
+            
 
         </form>
         <div class="actions">
@@ -141,8 +141,44 @@
             return false;
         }
 
+        function LoadVoyage() {
+            $.ajax({
+                url: '/api/Voyages',
+                success: function (Voyages) {
+                    var select = $("#IDVoyage");
+                    select.empty();
+                    select.append($('<option></option>')); // élément vide
 
+                    for (Voyage of Voyages) {
+                        var option = $('<option></option>');
+                        option.val(Voyage.Id);
+                        option.text(Voyage.Destination.Region);
+                        select.append(option);
+                    }
+                }
+            });
+        }
 
+        function LoadClient() {
+            $.ajax({
+                url: '/api/Clients',
+                success: function (Clients) {
+                    var select = $("#IDClient");
+                    select.empty();
+                    select.append($('<option></option>')); // élément vide
+
+                    for (Client of Clients) {
+                        var option = $('<option></option>');
+                        option.val(Client.Id);
+                        option.text(Client.Prenom+" "+Client.Nom);
+                        select.append(option);
+                    }
+                }
+            });
+        }
+
+        LoadClient();
+        LoadVoyage();
         $(document).ready(function () {
             $('#NumeroCarteBancaire').focus(); // Sans jquery: document.getElementById('Nom').focus();
         });
